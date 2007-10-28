@@ -1,0 +1,686 @@
+#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Graphics
+	filename UQ.png
+	lyxscale 30
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Logo is missing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Monitoring and Visualizing Wireless Mesh Networks
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+
+\end_layout
+
+\begin_layout Abstract
+Wireless mesh networking is one of the current advances in electronic communicat
+ions aimed towards building resilient and efficient networks that can be
+ deployed even in environments where networking infrastructure does not
+ exist.
+ This thesis proposes a system for monitoring and visualizing wireless mesh
+ networks based on common networking components.
+ The relevance of this project stems from several issues that need to be
+ addressed for the development of wireless mesh networking solutions by
+ National ICT Australia (NICTA).
+\end_layout
+
+\begin_layout Abstract
+To determine the operational status of a wireless mesh network, a wireless
+ mesh may be monitored to record meaningful statistics such as wireless
+ link information, network utilization, latency and packet routing history.
+ With NICTA's current research focusing on the usage of multiple radio transmiss
+ion channels in order to reduce the contention and latency during data transfers
+, how to proactively record and visualize the state of possibly mobile nodes
+ on the mesh with limited connectivity remains an interesting research problem.
+ We also have to take into consideration the scalability of the monitoring
+ system, in which the wireless mesh may consist of an arbitrarily large
+ number of nodes.
+ Thus, by implementing an efficient monitoring and visualization system
+ we can further improve the ability to troubleshoot the mesh by identifying
+ problematic links in the network and speed up its development.
+\end_layout
+
+\begin_layout Abstract
+
+\newpage
+
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+This thesis represents my research undertaken during the two semesters in
+ 2007.
+ Over the time of development and writing of this paper, I have received
+ countless support from family, friends and fellow classmates.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Need to finish.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+There is a growing need for resilient and efficient networking technologies
+ that can be deployed in environments where networking infrastructure does
+ not exist.
+ Wireless mesh networking is one of the recent developments in electronic
+ communications that aims to achieve this.
+\end_layout
+
+\begin_layout Standard
+To determine the operational status of a wireless mesh network, the mesh
+ may be monitored to record meaningful information and other useful statistics.
+ Such statistics usually include wireless link information, network utilization,
+ latency and packet routing history.
+ These measurements can be aggregated and then analyzed.
+ By observing the fluctuations in the resulting data, one may be able to
+ estimate the overall 
+\begin_inset Quotes eld
+\end_inset
+
+health
+\begin_inset Quotes erd
+\end_inset
+
+ of the mesh itself.
+ As an example, an observed high packet loss rate and low signal strength
+ hints that the wireless links may be too weak or too far apart.
+ By collecting multiple relevant data for a wireless mesh network in one
+ place, the process of troubleshooting wireless mesh networks may be greatly
+ improved.
+ The data can also be visualized and displayed as well, for example by plotting
+ measurements taken against time, allowing the observer to clearly see any
+ faults in the wireless mesh network.
+\end_layout
+
+\begin_layout Standard
+In this thesis, I aim to research methods for monitoring and visualizing
+ wireless mesh networks.
+ The relevance of the project stems from several issues that need to be
+ addressed for the development of wireless mesh networking by National ICT
+ Australia (NICTA).
+ Implementing an efficient monitoring and visualization system will improve
+ researchers
+\begin_inset Quotes ers
+\end_inset
+
+ ability to troubleshoot the mesh and speed up its development.
+ There has not been much previous research on this area, as well as publicly
+ available tools built for this purpose.
+\end_layout
+
+\begin_layout Standard
+At the same time, there has been renewed interest on the usage of multiple
+ radio transmission channels in wireless mesh networking, although research
+ on this area remains scarce.
+ It is also not well established as to how much does a wireless mesh management
+ architecture affect the efficiency of the mesh, and what are viable options
+ for deploying one such framework.
+ It is common to poll each node on the mesh network from a centralized setup,
+ where each node responds to poll requests with management data.
+ However there has been numerous proposals on decentralizing the management
+ architecture for efficiency reasons.
+ This project aims to carry out a number of studies for testing these concepts.
+ Documenting the observations over the period of the project will allow
+ better understanding on issues specific to this installation, such as routing
+ protocol recovery and throughput.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Polish up introduction to properly introduce paper.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+
+\end_layout
+
+\begin_layout Section
+Background
+\end_layout
+
+\begin_layout Standard
+The following sections document the basic concepts of wireless mesh network,
+ background information on ongoing research on using multi-channel radios
+ for mesh connectivity, methods for network monitoring in general, and also
+ examples on network visualization.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Describe more on what will be covered.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Wireless Mesh Networking
+\end_layout
+
+\begin_layout Standard
+A wireless mesh network is a dynamically self-organized, self-configuring
+ and self-healing networking architecture consisting of multiple wireless
+ nodes interconnected in an ad-hoc manner 
+\begin_inset LatexCommand cite
+key "Akyildiz2005"
+
+\end_inset
+
+.
+ Nodes may contain mesh routing functions that forward packets on behalf
+ of connected neighbors within range, wherein network traffic now flows
+ through multiple 
+\begin_inset Quotes els
+\end_inset
+
+hops
+\begin_inset Quotes ers
+\end_inset
+
+ to reach their destination, or they may be simple mesh clients connected
+ to the wireless mesh a la architecture mode.
+ Using this networking architecture the coverage range of a wireless network
+ can be extended greatly.
+ This ability that allows them to be deployed where no existing networking
+ architecture is in place makes them suitable for applications such as emergency
+ response, transport applications (for example 
+\begin_inset LatexCommand cite
+key "Obana2006"
+
+\end_inset
+
+), community networking (for example the MIT 
+\begin_inset Quotes els
+\end_inset
+
+Roofnet
+\begin_inset Quotes ers
+\end_inset
+
+ project 
+\begin_inset LatexCommand cite
+key "1080833"
+
+\end_inset
+
+) and rural environments.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Point: replacing WLAN
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Present multiple uses
+\end_layout
+
+\end_inset
+
+ Presented 
+\end_layout
+
+\begin_layout Standard
+Akyildiz et al.\InsetSpace \space{}
+identifies three type of mesh networks compositions 
+\begin_inset LatexCommand cite
+key "Akyildiz2005"
+
+\end_inset
+
+.
+ 
+\emph on
+Client mesh
+\emph default
+ networks are identical to conventional ad\SpecialChar \-
+hoc networks.
+ The mesh consists of an arbitrary number of client nodes that participate
+ in mesh packet routing themselves, and may also provide end-user services.
+ As such, there is no need for a centralized service provider to manage
+ the operation of the network itself, for example conventional network routers.
+ However, physical requirements for client nodes such as battery and processing
+ power will be considerably higher in order to support these additional
+ functions; currently, this problem still remains an active research area
+ for the use of low energy consumption mobile ad\SpecialChar \-
+hoc networks.
+ On the other hand, 
+\emph on
+infrastructure mesh
+\emph default
+ networks rely on centralized mesh nodes in the network to provide routing
+ functionality.
+ Mesh routers form the backbone of the wireless network, while mesh clients
+ passively consume the service provided by the routers without participating
+ in routing, thus easing the problem of power requirements mentioned previously.
+ Network connectivity may be derived from already existing technologies
+ such as IEEE 802.11, GPRS and even Ethernet, allowing common end-user devices
+ such as mobile phones and Wi\SpecialChar \-
+Fi capable laptop computers to transparently
+ access the mesh network.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Hybrid mesh
+\emph default
+ networks inherit the advantages of both client and infrastructure mesh
+ networks by combining both architectures.
+ Client nodes may be directly connected to mesh routers, or they may implement
+ routing functionality and participate in meshing with other nodes as well,
+ at the same time enhancing the existing network architecture.
+ Due to its flexibility and attractiveness for commercial use this approach
+ has been gaining traction in research, and is relevant to the aims of this
+ project.
+\end_layout
+
+\begin_layout Subsection
+Multi Radio Meshes
+\end_layout
+
+\begin_layout Standard
+Typically, wireless stations deployed for use in 802.11 networking are only
+ equipped with one IEEE 802.11 wireless antenna, and communicate via a single
+ predefined wireless channel.
+ Therefore, they are categorized as 
+\begin_inset Quotes els
+\end_inset
+
+single-channel radios
+\begin_inset Quotes ers
+\end_inset
+
+.
+ However, due to the hardware limitations for sending and receiving signals
+ at the same time, IEEE 802.11 is half duplex in nature.
+ This leads to the problem of congestion and channel contention.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+This part needs to be completely rewritten.
+\end_layout
+
+\end_inset
+
+ On the other hand the IEEE 802.11 specification allows for using multiple
+ non-overlapping channels simultaneously.
+ Thus, it is possible to employ wireless routers with 
+\begin_inset Quotes els
+\end_inset
+
+multi-channel radio
+\begin_inset Quotes ers
+\end_inset
+
+ capability by assigning each radio to different non-overlapping channels,
+ which will minimize the channel contention problem as described earlier.
+\end_layout
+
+\begin_layout Subsection
+Monitoring
+\end_layout
+
+\begin_layout Standard
+A wireless network it may be monitored to observe over a period of time
+ to determine how well it is performing under current conditions.
+ The performance of wireless communications may be affected by several factors.
+ Firstly, due to the nature in which wireless signals are sent over the
+ ether the medium itself is highly unreliable.
+ Wireless transmission performance may be easily influenced by environmental
+ conditions, such as moisture and background radio interference, and also
+ artifacts in the line of sight.
+ At the same time, other networking factors such as networking protocols
+ used, simultaneous client access causing contention for network bandwidth,
+ and hardware or software faults may also further complicate the process
+ of diagnosing the network.
+ In fact, it has been stated that currently there is still no heuristical
+ or theoretical method which can accurately explain the behaviour of any
+ network based on these captured information 
+\begin_inset LatexCommand cite
+key "Qiu2006"
+
+\end_inset
+
+.
+ In most cases however, it is best to assume best case 
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Connect this to next paragraph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An incomplete, but rather simple metric for identifying problems in the
+ wireless mesh network is to observe flunctuations in the packet loss rate
+ and average throughput.
+ By comparing these against other collected data such as network topology
+ and medium statistics, one may be able to pinpoint and single out erratic
+ network links in the wireless mesh 
+\begin_inset LatexCommand cite
+key "1163597"
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Outdated citation key
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are several methods as to how data may be gathered.
+ The most common approach using existing standards is by using the 
+\begin_inset Quotes els
+\end_inset
+
+
+\emph on
+Simple Network Management Protocol
+\emph default
+
+\begin_inset Quotes ers
+\end_inset
+
+ (SNMP) 
+\begin_inset LatexCommand cite
+key "Henderson2006"
+
+\end_inset
+
+.
+ An 
+\emph on
+SNMP manager
+\emph default
+ is responsible for polling a preconfigured number of nodes present on the
+ mesh containing 
+\emph on
+SNMP agents
+\emph default
+.
+ An agent is an executable software module which mediates the access of
+ information in the nodes by the manager.
+ Useful variables regarding the nodes
+\begin_inset Quotes ers
+\end_inset
+
+ condition are described as 
+\emph on
+managed objects
+\emph default
+, and are stored in a 
+\emph on
+Management Information Base
+\emph default
+ (MIB).
+ The level of detail can be further extended with vendor-specific MIBs,
+ for example wireless signal strength and MAC address.
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "SNMP-performance"
+
+\end_inset
+
+However, to achieve almost real-time monitoring, the SNMP poll interval
+ must be frequent enough.
+ This results in additional traffic within the mesh that may overload the
+ network and impact its performance.
+ In their multi\SpecialChar \-
+hop wireless network study Qiu et al.\InsetSpace \space{}
+reports that data collection
+ overhead is relatively low and will not affect significantly application
+ traffic in the network 
+\begin_inset LatexCommand cite
+key "1163597"
+
+\end_inset
+
+.
+ However the scale of the test is relatively small with only up to 50 nodes,
+ thus the study may not be accurate in real-world wireless mesh deployments.
+ Henderson and Kotz observes that an interval of below 5 minutes may already
+ saturate a wired LAN 
+\begin_inset LatexCommand cite
+key "Henderson2006"
+
+\end_inset
+
+.
+ The network addresses of the agents must also be identified beforehand
+ for the SNMP poll messages to be transmitted.
+ This makes traditional SNMP unsuitable to be used with wireless mesh networks,
+ where mobile mesh nodes may be capable of leaving and joining the mesh
+ network at any time.
+ Besides, in client mesh networks where nodes may be at least two hops away
+ from the SNMP manager the traffic gathered will also be inaccurate as it
+ may be skewed towards the nodes with many indirect neighbors, leading to
+ an inaccurate analysis.
+\end_layout
+
+\begin_layout Standard
+Sending management traffic through a wireless mesh network mixing with legitimat
+e traffic is known as 
+\begin_inset Quotes eld
+\end_inset
+
+in-band
+\begin_inset Quotes erd
+\end_inset
+
+.
+ As previously mentioned this is reportedly undesirable, as it may potentially
+ affect the performance of the mesh.
+ Relying on in-band data distribution may also cause nodes to be unreachable
+ for management purposes if the links used for mesh routing are disconnected
+ 
+\begin_inset LatexCommand cite
+key "Ramachandran2005"
+
+\end_inset
+
+.
+ An alternate method is to use an external channel dedicated for delivering
+ management traffic to other stations on the network, or 
+\begin_inset Quotes eld
+\end_inset
+
+out-of-band
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In conditions where the wireless mesh routers are close to each other Ethernet
+ may be used as the transmission medium.
+ Ramachandran et al.\InsetSpace \space{}
+proposes stacking additional wireless mesh routers on
+ existing ones, carrying out management functions via a second wireless
+ mesh network 
+\begin_inset LatexCommand cite
+key "Ramachandran2005"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another commonly used tool for gathering statistics regarding the data on
+ a network is packet 
+\begin_inset Quotes eld
+\end_inset
+
+sniffing
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset LatexCommand cite
+key "Qiu2003"
+
+\end_inset
+
+, which refers to the capturing of all network traffic that can be listened
+ to by a machine.
+ The network interface will have be placed into 
+\begin_inset Quotes eld
+\end_inset
+
+promiscuous
+\begin_inset Quotes erd
+\end_inset
+
+ mode in order to receive the network traffic.
+ These traffic data can then be analyzed using specific tools to retrieve
+ useful information, such as sender and recipient addresses, protocol used
+ and, by stripping away low-layer packet headers, contents of higher-layer
+ packets.
+\end_layout
+
+\begin_layout Subsection
+Visualization
+\end_layout
+
+\begin_layout Section
+Project Design
+\end_layout
+
+\begin_layout Section
+Technical Specifications
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand bibtex
+options "bibtotoc,ieeetr"
+bibfiles "Thesis"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
