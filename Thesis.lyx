@@ -650,14 +650,195 @@ promiscuous
  useful information, such as sender and recipient addresses, protocol used
  and, by stripping away low-layer packet headers, contents of higher-layer
  packets.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Add more information re: monitoring
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Visualization
 \end_layout
 
+\begin_layout Standard
+Visualizations have always been touted as 
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Finish background section
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Project Design
+Project Outline
+\end_layout
+
+\begin_layout Subsection
+Motivations
+\end_layout
+
+\begin_layout Standard
+The main aim of this project is to develop an intuitive and easy to use
+ monitoring and visualization system for wireless mesh networks.
+ While it is specifically built to cater for NICTA's current wireless mesh
+ development, while providing an easily extensible programming interface
+ to support different configurations.
+\end_layout
+
+\begin_layout Standard
+Despite the recent peak in interest on wireless mesh networking, research
+ on mesh monitoring and visualization has still been scarce.
+ Traditionally, network monitoring is done using basic tools that poll the
+ status of each node on a network for information.
+ These gathered information is then aggregated and displayed on a user interface
+ to be interpreted by the viewer.
+ The same procedure can be applied to wireless mesh networks as well.
+ However, because of the nature of wireless mesh networking itself, traditional
+ methods are proven to be inefficient, and do not scale well.
+ A wireless network needs to be capable of growing organically to support
+ an arbitrarily large number of mesh nodes.
+ The centralized approach used by traditional methods growth will detriment
+ the mesh's ability to expand, as the load of ncreases exponentially to
+ the number of nodes in the wireless mesh network.
+\end_layout
+
+\begin_layout Standard
+As this document has covered in 
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+section 2
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+Also, the thesis aims to inspect properties which are known to affect the
+ ability of anetwork monitoring system to correctly gather statistics on
+ the workings of a wireless mesh, and how to best mitigate these issues
+ as much as possible using simple, easily available solutions.
+\end_layout
+
+\begin_layout Standard
+This involves determining the specificiations that would constitute or improve
+ the wireless monitor efficiency
+\end_layout
+
+\begin_layout Standard
+- developing the system requires analyzing previous work by NICTA
+\end_layout
+
+\begin_layout Standard
+- problems in NICTA's system - extremely simple but inefficient, unable
+ to fetch more detailed information
+\end_layout
+
+\begin_layout Standard
+- also, rigid structure making it hard to extend
+\end_layout
+
+\begin_layout Standard
+- observed to be very slow over wireless links
+\end_layout
+
+\begin_layout Standard
+The aim of the research is to develop an intuitive interface to NICTA
+\begin_inset Quotes ers
+\end_inset
+
+s wireless mesh monitoring system.
+ This involves building modules for collecting monitoring data, aggregating
+ into meaningful graphs, and presenting them coherently.
+ With it the network topology, overall health and traffic flow of the wireless
+ mesh can be observed, which allows the underlying design of the mesh to
+ be evaluated more easily.
+\end_layout
+
+\begin_layout Standard
+The data collected will include generic measurements such as data throughput,
+ packet loss, response times and routing, as well as specific 802.11 information,
+ such as link quality, signal strength and noise.
+ To achieve this an SNMP MIB extension will have to be prepared that is
+ capable of retrieving these measurements from the mesh node itself.
+ This data is then fed to a graphical imaging tools to be displayed on the
+ web interface.
+\end_layout
+
+\begin_layout Standard
+Studies will also be carried out by applying different approaches to the
+ wireless mesh monitoring system while observing the overall status of the
+ mesh.
+ This is particularly to confirm whether it is possible to significantly
+ improve data dissemination within the mesh using a decentralized approach
+ compared to conventional methods.
+\end_layout
+
+\begin_layout Standard
+The main goal for this project is to implement a software package for monitoring
+ and visualizing wireless mesh networks.
+ This will involve analyzing previous work by NICTA, and implementing a
+ number of improvements allowing it to be more efficient.
+ The package consists of a number of separate modules, where each one will
+ be built from existing and easily available software tools so it can be
+ deployed on any number of mesh networks with minimum configuration.
+ The modules include an interactive graphical interface for visualizing
+ the traffic and network topology of wireless mesh networks, software to
+ be deployed alongside existing wireless mesh architecture for gathering
+ monitoring data, and other extensions to improve the workings of the wireless
+ mesh network.
+\end_layout
+
+\begin_layout Standard
+In a real-world deployment, a wireless mesh network is likely to consist
+ of up to hundreds or more of mesh nodes, scattered unevenly over an arbitrary
+ coverage area.
+ As such, the management architecture must be capable of scaling to a network
+ of such size.
+ To manage this mesh several factors to be considered would be network efficienc
+y, reliability, accuracy, and especially in the case of user interfaces,
+ ease of use.
+ Several studies will be carried out based on a small-scale testbed in NICTA
+ to formulate a hypothesis on efficient network management.
+ As previously written, there is not much research on the collection and
+ interpretation of monitoring data to determine the health of a mesh network.
+ There are no standardized benchmark settings for conducting these experiments
+ as well.
+ Using NICTA
+\begin_inset Quotes ers
+\end_inset
+
+s testbed, an experimental monitoring system will be deployed and tested.
+ Data gathered from the system is then visualized on the web interface.
+\end_layout
+
+\begin_layout Standard
+Traffic generated from the testbed will be analyzed to evaluate the efficiency
+ of the monitoring system.
+ This will be determined by comparing captured traffic against those generated
+ by the monitoring system on the testbed.
+ A monitoring system should have minimal impact of the wireless mesh itself
+ by generating less network overhead, or it may potentially affect the throughpu
+t of other traffic.
+ There has been previous research on reducing this overhead, including using
+ a separate transmission medium for management traffic, and decentralizing
+ the monitoring system.
+ Some of these proposals will be reproduced on this testbed and evaluated.
 \end_layout
 
 \begin_layout Section
