@@ -1,0 +1,1845 @@
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+
+\usepackage{graphics}
+% if you want encapsulated PS figures.
+
+% If you use a macro file called macros.tex :
+% \input{macros}
+% Note: The present document has its macros built in.
+
+% Number subsections but not subsubsections:
+
+% Show subsections but not subsubsections in table of contents:
+
+
+% Chapter on left page, Section on right.
+\raggedbottom
+
+\setlength{\topmargin}{-5mm}  %  25-5 = 20mm
+\setlength{\oddsidemargin}{10mm}  % rhs page inner margin = 25+10mm
+\setlength{\evensidemargin}{0mm}   % lhs page outer margin = 25mm
+\setlength{\textwidth}{150mm} % 35 + 150 + 25 = 210mm
+\setlength{\textheight}{240mm} % 
+
+\renewcommand{\baselinestretch}{1.2}	% Looks like 1.5 spacing.
+
+% Stop figure/tables smaller than 3/4 page from appearing alone on a page:
+\renewcommand{\textfraction}{0.25}
+\renewcommand{\topfraction}{0.75}
+\renewcommand{\bottomfraction}{0.75}
+\renewcommand{\floatpagefraction}{0.75}
+
+% THEOREM-LIKE ENVIRONMENTS:
+\newtheorem{defn}	{Definition}	% cf. \dfn for cross-referencing
+\newtheorem{theorem}	{Theorem}	% cf. \thrm for cross-referencing
+\newtheorem{lemma}	{Lemma}		% cf. \lem for cross-referencing
+
+% AIDS TO CROSS-REFERENCING (All take a label as argument):
+\newcommand{\eref}[1]{(\ref{#1})}		% (...)
+\newcommand{\eq}[1]{Eq.\,(\ref{#1})}		% Eq.~(...)
+\newcommand{\eqs}[2]{Eqs.~(\ref{#1}) and~(\ref{#2})}
+\newcommand{\dfn}[1]{Definition~\ref{#1}}	% Definition~...
+\newcommand{\thrm}[1]{Theorem~\ref{#1}}	% Theorem~...
+\newcommand{\lem}[1]{Lemma~\ref{#1}}		% Lemma~...
+\newcommand{\fig}[1]{Fig.\,\ref{#1}}		% Fig.~...
+\newcommand{\tab}[1]{Table~\ref{#1}}		% Table~...
+\newcommand{\chap}[1]{Chapter~\ref{#1}}	% Chapter~...
+\newcommand{\secn}[1]{Section~\ref{#1}}	% Section~...
+\newcommand{\ssec}[1]{Subsection~\ref{#1}}	% Subsection~...
+
+% AIDS TO FORMATTING:
+\newcommand{\teq}[1]{\mbox{$#1$}}	% in-Text EQuation (unbreakable)
+\newcommand{\qed}{\hspace*{\fill}$\bullet$}	% end of proof
+
+% MATHEMATICAL TEMPLATES:
+% Text or math mode:
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}	% one-half
+\newcommand{\halftxt}{\mbox{$\frac{1}{2}$}}	  	% one-half, small
+% Math mode only:
+% N.B. Parentheses are ROUND; brackets are SQUARE!
+\newcommand{\oneon}[1]{\frac{1}{#1}}		  % reciprocal
+\newcommand{\pow}[2]{\left({#1}\right)^{#2}}  % Parenthesized pOWer
+\newcommand{\bow}[2]{\left[{#1}\right]^{#2}}  % Bracketed pOWer
+\newcommand{\evalat}[2]{\left.{#1}\right|_{#2}}  % EVALuated AT with bar
+\newcommand{\bevalat}[2]{\left[{#1}\right]_{#2}}  % Bracketed EVALuated AT
+% Total derivatives:
+\newcommand{\sdd}[2]{\frac{d{#1}}{d{#2}}}		    % Short
+\newcommand{\sqdd}[2]{\frac{d^2{#1}}{d{#2}^2}}	    % 2nd ("SQuared")
+\newcommand{\ldd}[2]{\frac{d}{d{#1}}\left({#2}\right)}  % Long paren'ed
+\newcommand{\bdd}[2]{\frac{d}{d{#2}}\left[{#2}\right]}  % long Bracketed
+% Partial derivatives (same sequence as for total derivatives):
+\newcommand{\sdada}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\sqdada}[2]{\frac{\partial ^{2}{#1}}{\partial {#2}^{2}}}
+\newcommand{\ldada}[2]{\frac{\partial}{\partial {#1}}\left({#2}\right)}
+\newcommand{\bdada}[2]{\frac{\partial}{\partial {#1}}\left[{#2}\right]}
+\newcommand{\da}{\partial}
+
+% ORDINAL NUMBERS:
+\newcommand{\ith}{\ensuremath{i^{\rm th}}}
+\newcommand{\jth}{\ensuremath{j^{\rm th}}}
+\newcommand{\kth}{\ensuremath{k^{\rm th}}}
+\newcommand{\lth}{\ensuremath{l^{\rm th}}}
+\newcommand{\mth}{\ensuremath{m^{\rm th}}}
+\newcommand{\nth}{\ensuremath{n^{\rm th}}}
+
+% SINUSOIDAL TIME AND SPACE-DEPENDENCY FACTORS:
+\newcommand{\ejot}{\ensuremath{e^{j\omega t}}}
+\newcommand{\emjot}{\ensuremath{e^{-j\omega t}}}
+
+% UNITS (TEXT OR MATH MODE, WITH LEADING PADDING SPACE IF APPLICABLE):
+% NB: These have not been tested since being modified for LaTeX2e.
+\newcommand{\pack}{\hspace{-0.08em}}
+\newcommand{\Pack}{\hspace{-0.12em}}
+\newcommand{\mA}{\ensuremath{\rm\,m\pack A}}
+\newcommand{\dB}{\ensuremath{\rm\,d\pack B}}
+\newcommand{\dBm}{\ensuremath{\rm\,d\pack B\pack m}}
+\newcommand{\dBW}{\ensuremath{\rm\,d\pack B\Pack W}}
+\newcommand{\uF}{\ensuremath{\rm\,\mu\pack F}}
+\newcommand{\pF}{\ensuremath{\rm\,p\pack F}}
+\newcommand{\nF}{\ensuremath{\rm\,n\pack F}}
+\newcommand{\uH}{\ensuremath{\rm\,\mu\pack H}}
+\newcommand{\mH}{\ensuremath{\rm\,m\pack H}}
+\newcommand{\Hz}{\ensuremath{\rm\,H\pack z}}
+\newcommand{\kHz}{\ensuremath{\rm\,k\pack H\pack z}}
+\newcommand{\MHz}{\ensuremath{\rm\,M\pack H\pack z}}
+\newcommand{\GHz}{\ensuremath{\rm\,G\pack H\pack z}}
+\newcommand{\J}{\ensuremath{\rm\,J}}
+\newcommand{\kg}{\ensuremath{\rm\,k\pack g}}
+\newcommand{\K}{\ensuremath{\rm\,K}}
+\newcommand{\m}{\ensuremath{\rm\,m}}
+\newcommand{\cm}{\ensuremath{\rm\,cm}}
+\newcommand{\km}{\ensuremath{\rm\,k\pack m}}
+\newcommand{\mm}{\ensuremath{\rm\,m\pack m}}
+\newcommand{\nm}{\ensuremath{\rm\,n\pack m}}
+\newcommand{\um}{\ensuremath{\rm\,\mu m}}
+\newcommand{\Np}{\ensuremath{\rm\,N\pack p}}
+\newcommand{\s}{\ensuremath{\rm\,s}}
+\newcommand{\ms}{\ensuremath{\rm\,m\pack s}}
+\newcommand{\us}{\ensuremath{\rm\,\mu s}}
+\newcommand{\V}{\ensuremath{\rm\,V}}
+\newcommand{\mV}{\ensuremath{\rm\,m\Pack V}}
+\newcommand{\W}{\ensuremath{\rm\,W}}
+\newcommand{\mW}{\ensuremath{\rm\,m\Pack W}}
+\newcommand{\ohm}{\ensuremath{\rm\,\Omega}}
+\newcommand{\kohm}{\ensuremath{\rm\,k\Omega}}
+\newcommand{\Mohm}{\ensuremath{\rm\,M\Omega}}
+\newcommand{\degs}{\ensuremath{\rm^{\circ}}}
+
+% LaTeX run-time type-in command:
+%
+% \typein{Enter \protect\includeonly{...} command (or just type RETURN):}
+%
+% Uncommenting this command makes LaTeX prompt you for the \includeonly
+% list.  At the prompt
+%
+%	\@typein=
+%
+% you type
+%
+%	\includeonly{chap1,chap2}
+%
+% to include the files chap1.tex and chap2.tex and omit any others.
+% To include every \include file, just hit RETURN.
+% If you are running LaTeX from xtexsh, you may need to click the mouse
+% in the LaTeX window to position the cursor at the \@typein prompt.
+\end_preamble
+\options openany,a4paper
+\language english
+\inputencoding latin1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% By default, frontmatter has Roman page-numbering (i,ii,...).
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\baselinestretch}{1.0}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace 35mm*
+\end_inset
+
+ 
+\series bold
+\size giant
+TITLE
+\newline
+ OF YOUR
+\newline
+ MAGNUM OPUS
+\newline
+ 
+\begin_inset VSpace 20mm
+\end_inset
+
+ 
+\series default
+\shape slanted
+\size large
+by
+\newline
+ AUTHOR'S NAME 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\newline
+
+\shape default
+ 
+\family roman
+Department of Electrical and Computer Engineering,
+\newline
+ University of Queensland.
+\newline
+
+ 
+\begin_inset VSpace 30mm
+\end_inset
+
+ Submitted for the degree of
+\newline
+ Bachelor of Engineering (Pass/Honours) 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\newline
+ 
+\size normal
+in the division of \SpecialChar \ldots{}
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\newline
+ 
+\size large
+MONTH & YEAR.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Standard
+\align right
+ADDRESS LINE 1
+\newline
+ ADDRESS LINE 2
+\newline
+ Tel.\InsetSpace \space{}
+(07) nnnn nnnn
+\newline
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align left
+The Dean
+\newline
+ School of Engineering
+\newline
+ University of Queensland
+\newline
+ St Lucia, Q 4072
+\newline
+
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+ Dear Professor Simmons, 
+\end_layout
+
+\begin_layout Standard
+In accordance with the requirements of the degree of Bachelor of Engineering
+ (Pass/Honours) in the division of Computer Systems Engineering / Electrical
+ and Electronic Engineering, I present the following thesis entitled 
+\begin_inset Quotes eld
+\end_inset
+
+\SpecialChar \ldots{}
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This work was performed [in partnership with Mr/Ms \SpecialChar \ldots{}
+\InsetSpace \space{}
+and] under the supervision
+ of Mr/Ms/Dr/A/Prof./Prof.\InsetSpace ~
+\SpecialChar \ldots{}
+.
+\end_layout
+
+\begin_layout Standard
+I declare that the work submitted in this thesis is my own, except as acknowledg
+ed in the text and footnotes, and has not been previously submitted for
+ a degree at the University of Queensland or any other institution.
+\end_layout
+
+\begin_layout Standard
+\align right
+Yours sincerely,
+\newline
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+ 
+\emph on
+Author's Signature
+\emph default
+
+\newline
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+ AUTHOR'S NAME.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% Dedication (if you want it):
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 70mm*
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset FormulaMacro
+\renewcommand{\baselinestretch}{1.0}
+\end_inset
+
+ 
+\shape slanted
+To \SpecialChar \ldots{}
+ 
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Acknowledge your supervisor, preferably with a few short and specific statements
+ about his/her contribution to the content and direction of the project.
+ If you collaborated with another student, acknowledge your partner's contributi
+on, including any parts of the thesis of which s/he was the principal author
+ or co-author; this information can be duplicated in footnotes to the chapters
+ or sections to which your partner has contributed.
+ Briefly describe any assistance that you received from technical or administrat
+ive staff.
+ Support of family and friends may also be acknowledged, but avoid sentimentalit
+y---or hide it in the dedication.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Abstract
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% Notice that all 
+\backslash
+include files are chapters -- a logical division.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% But not all chapters are 
+\backslash
+include files; some chapters are short
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% enough to be in-lined in the main file.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+This document is a skeleton thesis for 4th-year students.
+ The printable versions (
+\family typewriter
+skel.dvi, skel.ps, skel.pdf
+\family default
+) show the structure of a typical thesis with some notes on the content
+ and purpose of each part.
+ The notes are meant to be informative but not necessarily illustrative;
+ for example, this paragraph is not really an abstract, because it contains
+ information not found elsewhere in the document.
+ The LaTeX2e\InsetSpace \space{}
+source file (
+\family typewriter
+skel.tex
+\family default
+) contains some non-printing comments giving additional information for
+ students who wish to typeset their theses in LaTeX.
+ You can download the source, edit out the unwanted material, insert your
+ own frontmatter and bibliographic entries, and in-line or 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+verb+
+\backslash
+include{}+
+\end_layout
+
+\end_inset
+
+ your own chapter files.
+ Of course the content of a particular thesis will influence the form to
+ a large extent.
+ Hence this document should not be seen as an attempt to force every thesis
+ into the same mold.
+ If in doubt about the structure of your thesis, seek advice from your superviso
+r.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\end_layout
+
+\end_inset
+
+List of Figures
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset FloatList table
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\end_layout
+
+\end_inset
+
+List of Tables
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% If file los.tex begins with ``
+\backslash
+chapter{List of Symbols}'':
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% 
+\backslash
+include{los}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+mainmatter
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% By default, mainmatter has Arabic page-numbering (1,2,...).
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% Chapters may be 
+\backslash
+include files, each beginning with a line like
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%
+\backslash
+chapter{Title of chapter}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% e.g.
+ if two chapter files were called intro.tex and theory.tex,
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% we would say
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%
+\backslash
+include{intro}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%
+\backslash
+include{theory}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Introduction
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+The introductory chapter describes the importance of the field and the scope
+ and significance of your project.
+ It usually ends with an overview of the remainder of the thesis.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Notice that Arabic page numbering begins with Chapter 1.
+ Preceding pages (known as 
+\begin_inset Quotes eld
+\end_inset
+
+frontmatter
+\begin_inset Quotes erd
+\end_inset
+
+) have Roman numbering.
+ The
+\shape default
+ 
+\family typewriter
+\shape slanted
+book
+\family default
+\shape default
+ 
+\shape slanted
+document class in LaTeX\InsetSpace \space{}
+follows this numbering convention by default (see
+ Lamport\InsetSpace ~
+
+\begin_inset LatexCommand cite
+key "lamport"
+
+\end_inset
+
+, p.\InsetSpace \thinspace{}
+80).
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Literature review / prior art
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+You will need to review previous work in the field, which may include books
+ and papers (
+\begin_inset Quotes eld
+\end_inset
+
+literature
+\begin_inset Quotes erd
+\end_inset
+
+), patents and commercial products (
+\begin_inset Quotes eld
+\end_inset
+
+prior art
+\begin_inset Quotes erd
+\end_inset
+
+), and earlier work in your Department.
+ This information is usually (but not always) collected in a single chapter,
+ whose title should preferably be more specific and interesting than the
+ one above.
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Theory
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+A scientific paper is likely to be read by people who are not specialists
+ in the same field as the author(s), but who nevertheless may need to use
+ the results of the paper in their own fields.
+ Similarly, the examiners of your thesis will probably include at least
+ one academic who does not teach or conduct research in the subject area
+ of your thesis.
+ In an early chapter of your thesis, therefore, you should quote any theoretical
+ results which are necessary for the understanding of later chapters.
+ Examiners who are not specialists in your area will know whether you have
+ given sufficient theoretical information.
+ They will also know whether you have insulted their status by presenting
+ material which is familiar to every half-competent graduate in every field
+ of ECE.
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Methodology, procedure, design, etc.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+This may be one chapter or several.
+ Again, titles should be more informative than the above.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+You will almost certainly need diagrams to clarify your meaning.
+ The LaTeX2e\InsetSpace \space{}
+
+\family typewriter
+graphics
+\family default
+\shape default
+ 
+\shape slanted
+package allows the inclusion of PostScript graphics, as in 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fig{
+\end_layout
+
+\end_inset
+
+flr1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+ The inclusion of LaTeX\InsetSpace \space{}
+
+\family typewriter
+picture
+\family default
+ graphics, as in 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fig{
+\end_layout
+
+\end_inset
+
+fzsys
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+, requires no auxiliary packages and allows the mathematical formatting
+ features of LaTeX\InsetSpace \space{}
+to be used in diagrams; but the 
+\family typewriter
+picture
+\family default
+ files, unlike PostScript files, usually require manual editing.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+
+\shape slanted
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename flr1.eps
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+
+\shape slanted
+Experimental two-way active crossover (op-amp version)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset LatexCommand label
+name "flr1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+
+\shape slanted
+ 
+\begin_inset Include \input{fzsys.latex}
+preview false
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+
+\shape slanted
+Modeling a discrete-time LTI system using 
+\begin_inset Formula $z$
+\end_inset
+
+-transforms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset LatexCommand label
+name "fzsys"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Results and discussion \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\SpecialChar \ldots{}
+\InsetSpace \space{}
+or perhaps the discussion should be a separate chapter.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+In any case, you will probably need to include tabulated results.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+tab{
+\end_layout
+
+\end_inset
+
+tf2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ illustrates the use of various LaTeX\InsetSpace \space{}
+environments to include a computer
+ printout (plain text file) in a document.
+ The 
+\family typewriter
+verbatim
+\family default
+ environment, which encloses the formatted text, is also useful for program
+ listings.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset FormulaMacro
+\renewcommand{\baselinestretch}{1.0}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+
+\shape slanted
+Fraction of air volume involved in heat exchange for second mode (right
+ column) vs.\InsetSpace \space{}
+filling factor (left column).
+ The plain-text headings represent 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset LatexCommand label
+name "tf2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+width "2.85in"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+
+\shape slanted
+\size normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+f(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%)     m         mu2     f2(%)
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+0.016 80.00 0.05400 4.874 0.031 56.57 0.07732 5.438 0.062 40.00 0.11103 6.125 0.125 28.28
+ 0.16001 6.970 0.250 20.00 0.23175 8.020 0.500 14.14 0.33799 9.329 1.000 10.00 0.49789
+ 10.967 2.000 7.07 0.74444 13.008 4.000 5.00 1.13919 15.525 8.000 3.54 1.81095 18.568
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+19.237 2.28 3.61958 23.174 37.180 1.64 7.28635 27.094 57.392 1.32 14.63631 29.813 74.316
+ 1.16 29.35160 31.453 85.734 1.08 58.79364 32.360 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Conclusions
+\end_layout
+
+\begin_layout Section
+
+\shape slanted
+Summary and conclusions
+\end_layout
+
+\begin_layout Section
+
+\shape slanted
+Possible future work
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%dummy comment inserted by tex2lyx to ensure that this paragraph is not
+ empty
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% Chapters after the 
+\backslash
+appendix command are lettered, not numbered.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% Setting apart the appendices in the table of contents is awkward:
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+
+\newpage
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+addcontentsline{toc}{part}{
+\end_layout
+
+\end_inset
+
+Appendices
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+mbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\newpage
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% The 
+\backslash
+mbox{} command between two 
+\backslash
+newpage commands gives a blank page.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% In the contents, the ``Appendices'' heading is shown as being on this
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% blank page, which is the page before the first appendix.
+  This stops the
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% first appendix from be listed ABOVE the word ``Appendices'' in the
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% table of contents.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% 
+\backslash
+include appendix chapters here.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Dummy appendix
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Appendices are useful for supplying necessary details or explanations which
+ do not seem to fit into the main text, perhaps because they are too long
+ and would distract the reader from the central argument.
+ Appendices are also used for program listings.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Notice that appendices are 
+\begin_inset Quotes eld
+\end_inset
+
+numbered
+\begin_inset Quotes erd
+\end_inset
+
+ with capital letters, not numerals.
+ When the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+verb+
+\backslash
+appendix+
+\end_layout
+
+\end_inset
+
+ command in LaTeX\InsetSpace ~
+
+\begin_inset LatexCommand cite
+after "p.\\,175"
+key "lamport"
+
+\end_inset
+
+ is used with the 
+\family typewriter
+book
+\family default
+ document class, it causes subsequent chapters to be treated as appendices.
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Program listings
+\end_layout
+
+\begin_layout Section
+
+\shape slanted
+First program
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Some initial explanatory notes may precede the listing.
+\end_layout
+
+\begin_layout Section
+
+\shape slanted
+Second program
+\end_layout
+
+\begin_layout Section
+
+\shape slanted
+Etc.
+\end_layout
+
+\begin_layout Chapter
+
+\shape slanted
+Companion disk
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+If you wish to make some computer files available to your examiners, you
+ can list and describe the files here.
+ The files can be supplied on a disk and inserted in a pocket fixed to the
+ inside back cover.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+The disk will not be needed if you can specify a URL from which the files
+ can be downloaded.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\end_layout
+
+\end_inset
+
+Bibliography
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Bibliography
+
+\shape slanted
+\begin_inset LatexCommand bibitem
+key "lamport"
+
+\end_inset
+
+ L.\InsetSpace ~
+Lamport,
+\shape default
+ 
+\shape slanted
+\emph on
+LaTeX: A Document Preparation System
+\emph default
+, 2nd ed.
+ (Addison-Wesley, 1994).
+ 
+\end_layout
+
+\begin_layout Bibliography
+
+\shape slanted
+\begin_inset LatexCommand bibitem
+key "LABEL2"
+
+\end_inset
+
+ REFERENCE 2 
+\end_layout
+
+\begin_layout Bibliography
+
+\shape slanted
+\begin_inset LatexCommand bibitem
+key "ETC."
+
+\end_inset
+
+ Etc.
+ 
+\end_layout
+
+\end_body
+\end_document

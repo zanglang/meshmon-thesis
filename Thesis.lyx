@@ -1,4 +1,4 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -15,6 +15,7 @@
 \font_tt_scale 100
 \graphics default
 \paperfontsize default
+\spacing double
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -25,7 +26,7 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\defskip 30pt
 \quotes_language english
 \papercolumns 1
 \papersides 1
@@ -40,18 +41,8 @@
 
 \begin_layout Title
 \begin_inset Graphics
-	filename UQ.png
-	lyxscale 30
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Logo is missing
-\end_layout
+	filename UQlogo.eps
+	subcaptionText "test"
 
 \end_inset
 
@@ -82,7 +73,7 @@ Monitoring and Visualizing Wireless Mesh Networks
 
 \end_layout
 
-\begin_layout Abstract
+\begin_layout Standard
 Wireless mesh networking is one of the current advances in electronic communicat
 ions aimed towards building resilient and efficient networks that can be
  deployed even in environments where networking infrastructure does not
@@ -94,7 +85,7 @@ ions aimed towards building resilient and efficient networks that can be
  National ICT Australia (NICTA).
 \end_layout
 
-\begin_layout Abstract
+\begin_layout Standard
 To determine the operational status of a wireless mesh network, a wireless
  mesh may be monitored to record meaningful statistics such as wireless
  link information, network utilization, latency and packet routing history.
@@ -110,7 +101,7 @@ ion channels in order to reduce the contention and latency during data transfers
  problematic links in the network and speed up its development.
 \end_layout
 
-\begin_layout Abstract
+\begin_layout Standard
 
 \newpage
 
@@ -220,7 +211,7 @@ Polish up introduction to properly introduce paper.
 
 \begin_layout Standard
 
-\newpage
+\cleardoublepage
 
 \end_layout
 
@@ -375,6 +366,12 @@ Hybrid mesh
 
 \begin_layout Subsection
 Multi Radio Meshes
+\begin_inset LatexCommand label
+name "sub:Multi-Radio-Meshes"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -681,6 +678,12 @@ Finish background section
 
 \end_layout
 
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
 \begin_layout Section
 Project Outline
 \end_layout
@@ -841,12 +844,776 @@ t of other traffic.
  Some of these proposals will be reproduced on this testbed and evaluated.
 \end_layout
 
-\begin_layout Section
-Technical Specifications
+\begin_layout Standard
+
+\cleardoublepage
+
 \end_layout
 
 \begin_layout Section
-Results
+Overview and Design
+\end_layout
+
+\begin_layout Subsection
+System Architecture
+\end_layout
+
+\begin_layout Standard
+MeshMon is implemented using a modular architecture so that it can be easily
+ understood and extended as required.
+ A high level view of the MeshMon system architecture is illustrated in
+ figure 
+\begin_inset LatexCommand ref
+reference "fig:System-design-overview"
+
+\end_inset
+
+, which outlines the individual components in each part of the monitoring
+ system.
+ Each component is listed and briefly summarized in the following sections.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename System.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+System design overview
+\begin_inset LatexCommand label
+name "fig:System-design-overview"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The MeshMon API provides a programmable interface based on Python on which
+ modules can be built on to utilize the daemon's core functionality.
+ The interface encompasses five main areas:
+\end_layout
+
+\begin_layout Description
+Nodes: Keeps track of all wireless mesh nodes ever seen on the network,
+ as well as implements the main data structures used for representing the
+ state of a wireless mesh node as observed from the monitoring system.
+\end_layout
+
+\begin_layout Description
+Topology: Generates a virtual topology representing the physcial locations
+ of wireless mesh nodes on it, as well as provide operations for allocating
+ mesh nodes to the virtual topology.
+\end_layout
+
+\begin_layout Description
+Plugins: Enables the functionality of loading and executing modules containing
+ to extend the functionality of MeshMon.
+ Plugins are implemented according to a fixed set of rules, and upon being
+ loaded provide a way for MeshMon to execute differently according to context.
+\end_layout
+
+\begin_layout Description
+Threads: Allows concurrent operation of tasks that may possibly block during
+ I/O or CPU intensive operations, and generic methods of managing all such
+ tasks during the lifetime of the monitoring system.
+\end_layout
+
+\begin_layout Description
+Web\InsetSpace ~
+Server: Provides a direct method to see all visualizations generated
+ by MeshMon as a rendered HTML web page.
+ The webserver handles all incoming HTTP requests, generates the output
+ accordingly, and returns it to the web browser client to be displayed.
+\end_layout
+
+\begin_layout Standard
+Higher up the level in the system architecture is the core monitoring system's
+ main functionality, which can be split into two categories: 
+\series bold
+Gatherers
+\series default
+ and 
+\series bold
+Renderers
+\series default
+.
+ As the name suggests, Gatherers provide methods to collect data and store
+ them using the underlying API, and Renderers provide methods to aggregate
+ and render the already collected data as visualizations.
+ At the time of completion, two Gatherers and two Renderers have been implemente
+d, that is:
+\end_layout
+
+\begin_layout Itemize
+SNMP
+\end_layout
+
+\begin_layout Itemize
+AODV
+\end_layout
+
+\begin_layout Itemize
+PHP-Weathermap
+\end_layout
+
+\begin_layout Itemize
+RRDtool
+\end_layout
+
+\begin_layout Standard
+Each of these components will be further discussed in section 
+\begin_inset LatexCommand ref
+reference "sec:Implementation"
+
+\end_inset
+
+, which describes their implementation details and underlying algorithms.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsection
+Visualization
+\end_layout
+
+\begin_layout Standard
+The following section describes concepts and techniques used by MeshMon
+ for generating visualizations for wireless mesh networks.
+\end_layout
+
+\begin_layout Subsubsection
+Topology
+\end_layout
+
+\begin_layout Standard
+To present all mesh nodes currently being monitored by MeshMon, each node
+ is mapped to a position on a flat topology diagram.
+ Each node's position may be preconfigured in the MeshMon configuration
+ file before run time, or have its position 
+\begin_inset Quotes els
+\end_inset
+
+guessed
+\begin_inset Quotes ers
+\end_inset
+
+ by MeshMon.
+ There are a few ways to do this, which will be discussed in order.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename placement.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Trying to place a node, using coordinate calculation
+\begin_inset LatexCommand label
+name "fig:Trying-to-place"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to find the best point to place a node, we can calculate an offset
+ in pixels from the coordinates of all neighbouring nodes.
+ This offset is then applied to the target node that is to be added to the
+ topology, where the node is placed approximately 
+\emph on
+n
+\emph default
+ amount of pixels away.
+ In order to achieve this, we are effectively determining the superset of
+ all outer boundaries of the neighbouring nodes, and attempting to find
+ a pot falling outside of this superset.
+ For example, as illustrated in figure 
+\begin_inset LatexCommand ref
+reference "fig:Trying-to-place"
+
+\end_inset
+
+ node A is being inserted into the topology, with 3 mesh neighbours already
+ identified.
+ Having calculated the outside boundaries of the 3 neighbours, we can simply
+ pick any position outside them to place node A, which appears to be trivial.
+ However, we will have to take into consideration that a real life wireless
+ mesh deployment may include multiple nodes densely placed together, as
+ shown in figure 
+\begin_inset LatexCommand ref
+reference "fig:Trying-to-place2"
+
+\end_inset
+
+, where this method appears to be too naive.
+ If we insist on placing node A outside the boundary set, and have node
+ A potentially link to any of the neighbouring nodes as indicated as the
+ black dots in the diagram, we will potentially obstruct or cross the links
+ of other nodes that happen to be in the 
+\begin_inset Quotes els
+\end_inset
+
+line of sight
+\begin_inset Quotes ers
+\end_inset
+
+.
+ This problem becomes more apparent if we have to implement multiple links,
+ as discussed in 
+\begin_inset LatexCommand ref
+reference "sub:Multi-Radio-Meshes"
+
+\end_inset
+
+.
+ As we draw links between this dense topology, our resulting visualization
+ will suffer from very low visibility.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename placement2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Trying to place a node, in dense wireless mesh deployments 
+\begin_inset LatexCommand label
+name "fig:Trying-to-place2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To solve the visibility problem, we can force a minimum buffer between the
+ nodes.
+ That is to say that we will always have a minimum number of 
+\emph on
+n
+\emph default
+ number of pixels between any two nodes that will be drawn onto the topology.
+ If applied to the previously mentioned figure 
+\begin_inset LatexCommand ref
+reference "fig:Trying-to-place2"
+
+\end_inset
+
+, we are essentially 
+\begin_inset Quotes els
+\end_inset
+
+blowing up
+\begin_inset Quotes ers
+\end_inset
+
+ and expanding the entire size of the topology, thus forcing more empty
+ space in the middle of the cluster of nodes in order to maximize drawing
+ space.
+ Yet we still have not solved the problem of the chaotic placement of nodes
+ in figure 
+\begin_inset LatexCommand ref
+reference "fig:Trying-to-place2"
+
+\end_inset
+
+.
+ This can be improved by introducing explicit rules to determine where a
+ node should be placed.
+\end_layout
+
+\begin_layout Standard
+To effectively do so, MeshMon partitions the topology into horizantal layers,
+ as was done similarly in 
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+paper
+\end_layout
+
+\end_inset
+
+.
+ Each layer can be represented by a transparent line, separated from the
+ next layer with a fixed number of pixels.
+ When mesh nodes are first detected and are added to the topology, a layer
+ is picked and the node is 
+\begin_inset Quotes els
+\end_inset
+
+allocated
+\begin_inset Quotes ers
+\end_inset
+
+ to it.If other nodes have already been added to the layer, it is just appended
+ to the list.
+ Thus, when visualizing the topology, we can derive the coordinates of each
+ node by determining which layer it is on, as well as the order that it
+ appears on that layer.
+ After the first node, the following nodes will just need to have its 
+\emph on
+x
+\emph default
+ offset increments by a fixed number of pixels so that they appear to be
+ uniformly distributed.
+ We can also further improve the apparent tidiness of the diagram by automatical
+ly shifting nodes towards the center of the topology.
+ An example of three mesh nodes allocated to a topology is shown in figure
+ 
+\begin_inset LatexCommand ref
+reference "fig:A-mesh-topology"
+
+\end_inset
+
+, where the layer lines are outlines in black.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename layers.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+A mesh topology with two layers and three allocated nodes
+\begin_inset LatexCommand label
+name "fig:A-mesh-topology"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to select a layer to allocate the node to, it is still necessary
+\end_layout
+
+\begin_layout Subsection
+Links
+\begin_inset LatexCommand label
+name "sub:Links"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Implementation
+\begin_inset LatexCommand label
+name "sec:Implementation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+MeshMon API
+\end_layout
+
+\begin_layout Standard
+MeshMon exposes a basic 
+\begin_inset Quotes els
+\end_inset
+
+Application Programming Interface
+\begin_inset Quotes ers
+\end_inset
+
+ (API) that can be used to store and access information gathered from the
+ monitoring process.
+\end_layout
+
+\begin_layout Subsubsection
+Threading
+\end_layout
+
+\begin_layout Standard
+One of the main problems of NICTA's original wireless mesh monitoring prototype
+ was its inability to run concurrent monitoring processes and fully utilize
+ the host computer's CPU and networking capability.
+ To solve this, MeshMon uses a multi\SpecialChar \-
+threaded approach by launching monitoring
+ processes for each mesh node in its own thread.
+ This implementation is outlined using the 
+\emph on
+GenericThread 
+\emph default
+and the 
+\emph on
+MonitorThread
+\emph default
+ code interface.
+ In order to manage all threads created, MeshMon provides a thread pool
+ for keeping track of new threads.
+ Each thread must be explicitly inserted into the thread pool when initialized.
+ Upon shutting down, MeshMon will then pass shutdown commands to each thread
+ so that the system shuts down gracefully.
+\end_layout
+
+\begin_layout Standard
+The GenericThread interface is basically described below:
+\end_layout
+
+\begin_layout LyX-Code
+class GenericThread(Thread):
+\end_layout
+
+\begin_layout LyX-Code
+    def __init__(self):
+\end_layout
+
+\begin_layout LyX-Code
+        self.func = 
+\emph on
+dummy function
+\end_layout
+
+\begin_layout LyX-Code
+    def run(self):
+\end_layout
+
+\begin_layout LyX-Code
+        self.func()
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+MonitorThread
+\emph default
+ interface is implemented as follows:
+\end_layout
+
+\begin_layout LyX-Code
+.
+\end_layout
+
+\begin_layout Subsection
+Plugin Architecture
+\end_layout
+
+\begin_layout Standard
+MeshMon implements a 
+\begin_inset Quotes els
+\end_inset
+
+plug-in
+\begin_inset Quotes ers
+\end_inset
+
+ architecture in which system functionality can be dynamically loaded when
+ starting up, or commonly called 
+\begin_inset Quotes els
+\end_inset
+
+Plugins
+\begin_inset Quotes ers
+\end_inset
+
+.
+ Each plugin is a self-contained Python module programmed to provide or
+ extend MeshMon's functionality.
+ Upon launch, MeshMon checks which plugin to load, creates an instance of
+ the plugin, and leaves the plugin code to initialize and utilize the MeshMon
+ API as it sees fit.
+\end_layout
+
+\begin_layout Standard
+Plugin functionality is divided into two categories:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Gatherers
+\emph default
+ are data sinks that collect information regarding the wireless mesh and
+ stores them using the MeshMon API.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Renderers
+\emph default
+ access data exposed in the MeshMon API and generate visualizations for
+ that data.
+\end_layout
+
+\begin_layout Standard
+In the final version of MeshMon, 2 plugins were implemented:
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+RRDTool
+\emph default
+ plugin is the main implementation of MeshMon, using SNMP, RRDTool and Weatherma
+p.
+ This will be the functionality that will be discussed further in the thesis.
+\end_layout
+
+\begin_layout Itemize
+The Simulation plugin does not actually gather data but instead visualizes
+ traffic from randomly generated numbers.
+ This plugin was only used for demonstrating how the visualization would
+ work without depending on having actual internet connectivity.
+\end_layout
+
+\begin_layout Standard
+To be recognized as a MeshMon plugin, the Python modules need to implement
+ the following interface:
+\end_layout
+
+\begin_layout LyX-Code
+PLUGIN_INFO = {
+\end_layout
+
+\begin_layout LyX-Code
+    'Plugin name',
+\end_layout
+
+\begin_layout LyX-Code
+    'Plugin author',
+\end_layout
+
+\begin_layout LyX-Code
+    'Plugin version',
+\end_layout
+
+\begin_layout LyX-Code
+    'Plugin description'
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Otherwise, MeshMon will refuse to load the module.
+ This effectively prevents MeshMon from failing to run correctly due to
+ misconfiguration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+More details on plugin, or Simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Web Frontend
+\end_layout
+
+\begin_layout Standard
+The web interface is implemented using the Web.py Python library 
+\begin_inset LatexCommand cite
+key "Swartz"
+
+\end_inset
+
+.
+ Web.py provides an internal WSGI webserver that, when invoked, can listen
+ for requests on a preconfigured port and service them.
+ By default, MeshMon starts the webserver on port 8081 using its own thread
+ upon starting up.
+ At this point, the webserver thread blocks on that TCP port and prepares
+ to accept HTTP requests on this URL:
+\end_layout
+
+\begin_layout LyX-Code
+http://localhost:8081
+\end_layout
+
+\begin_layout Standard
+The web server is configured to accept a number of commands using a Python
+ dictionary, as shown below:
+\end_layout
+
+\begin_layout LyX-Code
+URLS = {
+\end_layout
+
+\begin_layout LyX-Code
+    '/', index,
+\end_layout
+
+\begin_layout LyX-Code
+    '/update', update
+\end_layout
+
+\begin_layout LyX-Code
+    ...
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Each entry in the dictionary generates a mapping that links the URL to a
+ Python class that accepts the HTTP request type, which may be HTTP POST
+ or GET, and any parameters specified in the URL.
+ As an example, the implementation that handles 
+\begin_inset Quotes eld
+\end_inset
+
+/index.html
+\begin_inset Quotes erd
+\end_inset
+
+ is similar to the following code:
+\end_layout
+
+\begin_layout LyX-Code
+class index:
+\end_layout
+
+\begin_layout LyX-Code
+    def GET:
+\end_layout
+
+\begin_layout LyX-Code
+        # render the results here
+\end_layout
+
+\begin_layout LyX-Code
+    def POST:
+\end_layout
+
+\begin_layout LyX-Code
+        # data posted to webserver, execute processing
+\end_layout
+
+\begin_layout Standard
+Images served by the webserver is handled using a separate class to check
+ if the file name exists, and is a valid image file.
+ This allows the webserver to prevent clients loading images at inopportunate
+ periods when Weathermap or RRDTool is still rendering the image contents
+ and writing it to file.
+\end_layout
+
+\begin_layout Standard
+As MeshMon detects new nodes, node interfaces and AODV links between nodes,
+ new Weathermap and RRDTool images are added to the list.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+how the updates are sent
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
