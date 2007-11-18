@@ -2,7 +2,144 @@
 \lyxformat 276
 \begin_document
 \begin_header
-\textclass article
+\textclass book
+\begin_preamble
+\usepackage{graphics}
+% if you want encapsulated PS figures.
+
+% If you use a macro file called macros.tex :
+% \input{macros}
+% Note: The present document has its macros built in.
+
+% Number subsections but not subsubsections:
+
+% Show subsections but not subsubsections in table of contents:
+
+
+% Chapter on left page, Section on right.
+\raggedbottom
+
+% Stop figure/tables smaller than 3/4 page from appearing alone on a page:
+\renewcommand{\textfraction}{0.25}
+\renewcommand{\topfraction}{0.75}
+\renewcommand{\bottomfraction}{0.75}
+\renewcommand{\floatpagefraction}{0.75}
+
+% THEOREM-LIKE ENVIRONMENTS:
+\newtheorem{defn}	{Definition}	% cf. \dfn for cross-referencing
+\newtheorem{theorem}	{Theorem}	% cf. \thrm for cross-referencing
+\newtheorem{lemma}	{Lemma}		% cf. \lem for cross-referencing
+
+% AIDS TO CROSS-REFERENCING (All take a label as argument):
+\newcommand{\eref}[1]{(\ref{#1})}		% (...)
+\newcommand{\eq}[1]{Eq.\,(\ref{#1})}		% Eq.~(...)
+\newcommand{\eqs}[2]{Eqs.~(\ref{#1}) and~(\ref{#2})}
+\newcommand{\dfn}[1]{Definition~\ref{#1}}	% Definition~...
+\newcommand{\thrm}[1]{Theorem~\ref{#1}}	% Theorem~...
+\newcommand{\lem}[1]{Lemma~\ref{#1}}		% Lemma~...
+\newcommand{\fig}[1]{Fig.\,\ref{#1}}		% Fig.~...
+\newcommand{\tab}[1]{Table~\ref{#1}}		% Table~...
+\newcommand{\chap}[1]{Chapter~\ref{#1}}	% Chapter~...
+\newcommand{\secn}[1]{Section~\ref{#1}}	% Section~...
+\newcommand{\ssec}[1]{Subsection~\ref{#1}}	% Subsection~...
+
+% AIDS TO FORMATTING:
+\newcommand{\teq}[1]{\mbox{$#1$}}	% in-Text EQuation (unbreakable)
+\newcommand{\qed}{\hspace*{\fill}$\bullet$}	% end of proof
+
+% MATHEMATICAL TEMPLATES:
+% Text or math mode:
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}	% one-half
+\newcommand{\halftxt}{\mbox{$\frac{1}{2}$}}	  	% one-half, small
+% Math mode only:
+% N.B. Parentheses are ROUND; brackets are SQUARE!
+\newcommand{\oneon}[1]{\frac{1}{#1}}		  % reciprocal
+\newcommand{\pow}[2]{\left({#1}\right)^{#2}}  % Parenthesized pOWer
+\newcommand{\bow}[2]{\left[{#1}\right]^{#2}}  % Bracketed pOWer
+\newcommand{\evalat}[2]{\left.{#1}\right|_{#2}}  % EVALuated AT with bar
+\newcommand{\bevalat}[2]{\left[{#1}\right]_{#2}}  % Bracketed EVALuated AT
+% Total derivatives:
+\newcommand{\sdd}[2]{\frac{d{#1}}{d{#2}}}		    % Short
+\newcommand{\sqdd}[2]{\frac{d^2{#1}}{d{#2}^2}}	    % 2nd ("SQuared")
+\newcommand{\ldd}[2]{\frac{d}{d{#1}}\left({#2}\right)}  % Long paren'ed
+\newcommand{\bdd}[2]{\frac{d}{d{#2}}\left[{#2}\right]}  % long Bracketed
+% Partial derivatives (same sequence as for total derivatives):
+\newcommand{\sdada}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\sqdada}[2]{\frac{\partial ^{2}{#1}}{\partial {#2}^{2}}}
+\newcommand{\ldada}[2]{\frac{\partial}{\partial {#1}}\left({#2}\right)}
+\newcommand{\bdada}[2]{\frac{\partial}{\partial {#1}}\left[{#2}\right]}
+\newcommand{\da}{\partial}
+
+% ORDINAL NUMBERS:
+\newcommand{\ith}{\ensuremath{i^{\rm th}}}
+\newcommand{\jth}{\ensuremath{j^{\rm th}}}
+\newcommand{\kth}{\ensuremath{k^{\rm th}}}
+\newcommand{\lth}{\ensuremath{l^{\rm th}}}
+\newcommand{\mth}{\ensuremath{m^{\rm th}}}
+\newcommand{\nth}{\ensuremath{n^{\rm th}}}
+
+% SINUSOIDAL TIME AND SPACE-DEPENDENCY FACTORS:
+\newcommand{\ejot}{\ensuremath{e^{j\omega t}}}
+\newcommand{\emjot}{\ensuremath{e^{-j\omega t}}}
+
+% UNITS (TEXT OR MATH MODE, WITH LEADING PADDING SPACE IF APPLICABLE):
+% NB: These have not been tested since being modified for LaTeX2e.
+\newcommand{\pack}{\hspace{-0.08em}}
+\newcommand{\Pack}{\hspace{-0.12em}}
+\newcommand{\mA}{\ensuremath{\rm\,m\pack A}}
+\newcommand{\dB}{\ensuremath{\rm\,d\pack B}}
+\newcommand{\dBm}{\ensuremath{\rm\,d\pack B\pack m}}
+\newcommand{\dBW}{\ensuremath{\rm\,d\pack B\Pack W}}
+\newcommand{\uF}{\ensuremath{\rm\,\mu\pack F}}
+\newcommand{\pF}{\ensuremath{\rm\,p\pack F}}
+\newcommand{\nF}{\ensuremath{\rm\,n\pack F}}
+\newcommand{\uH}{\ensuremath{\rm\,\mu\pack H}}
+\newcommand{\mH}{\ensuremath{\rm\,m\pack H}}
+\newcommand{\Hz}{\ensuremath{\rm\,H\pack z}}
+\newcommand{\kHz}{\ensuremath{\rm\,k\pack H\pack z}}
+\newcommand{\MHz}{\ensuremath{\rm\,M\pack H\pack z}}
+\newcommand{\GHz}{\ensuremath{\rm\,G\pack H\pack z}}
+\newcommand{\J}{\ensuremath{\rm\,J}}
+\newcommand{\kg}{\ensuremath{\rm\,k\pack g}}
+\newcommand{\K}{\ensuremath{\rm\,K}}
+\newcommand{\m}{\ensuremath{\rm\,m}}
+\newcommand{\cm}{\ensuremath{\rm\,cm}}
+\newcommand{\km}{\ensuremath{\rm\,k\pack m}}
+\newcommand{\mm}{\ensuremath{\rm\,m\pack m}}
+\newcommand{\nm}{\ensuremath{\rm\,n\pack m}}
+\newcommand{\um}{\ensuremath{\rm\,\mu m}}
+\newcommand{\Np}{\ensuremath{\rm\,N\pack p}}
+\newcommand{\s}{\ensuremath{\rm\,s}}
+\newcommand{\ms}{\ensuremath{\rm\,m\pack s}}
+\newcommand{\us}{\ensuremath{\rm\,\mu s}}
+\newcommand{\V}{\ensuremath{\rm\,V}}
+\newcommand{\mV}{\ensuremath{\rm\,m\Pack V}}
+\newcommand{\W}{\ensuremath{\rm\,W}}
+\newcommand{\mW}{\ensuremath{\rm\,m\Pack W}}
+\newcommand{\ohm}{\ensuremath{\rm\,\Omega}}
+\newcommand{\kohm}{\ensuremath{\rm\,k\Omega}}
+\newcommand{\Mohm}{\ensuremath{\rm\,M\Omega}}
+\newcommand{\degs}{\ensuremath{\rm^{\circ}}}
+
+% LaTeX run-time type-in command:
+%
+% \typein{Enter \protect\includeonly{...} command (or just type RETURN):}
+%
+% Uncommenting this command makes LaTeX prompt you for the \includeonly
+% list.  At the prompt
+%
+%	\@typein=
+%
+% you type
+%
+%	\includeonly{chap1,chap2}
+%
+% to include the files chap1.tex and chap2.tex and omit any others.
+% To include every \include file, just hit RETURN.
+% If you are running LaTeX from xtexsh, you may need to click the mouse
+% in the LaTeX window to position the cursor at the \@typein prompt.
+\end_preamble
+\options openany,a4paper
 \language english
 \inputencoding auto
 \font_roman default
@@ -23,13 +160,13 @@
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 2
+\tocdepth 2
 \paragraph_separation indent
 \defskip 30pt
 \quotes_language english
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -39,88 +176,15 @@
 
 \begin_body
 
-\begin_layout Title
-\begin_inset Graphics
-	filename UQlogo.eps
-	subcaptionText "test"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Title
-Monitoring and Visualizing Wireless Mesh Networks
-\end_layout
-
 \begin_layout Standard
-
-\newpage
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\newpage
-
-\end_layout
-
-\begin_layout Standard
-Wireless mesh networking is one of the current advances in electronic communicat
-ions aimed towards building resilient and efficient networks that can be
- deployed even in environments where networking infrastructure does not
- exist.
- This thesis proposes a system for monitoring and visualizing wireless mesh
- networks based on common networking components.
- The relevance of this project stems from several issues that need to be
- addressed for the development of wireless mesh networking solutions by
- National ICT Australia (NICTA).
-\end_layout
-
-\begin_layout Standard
-To determine the operational status of a wireless mesh network, a wireless
- mesh may be monitored to record meaningful statistics such as wireless
- link information, network utilization, latency and packet routing history.
- With NICTA's current research focusing on the usage of multiple radio transmiss
-ion channels in order to reduce the contention and latency during data transfers
-, how to proactively record and visualize the state of possibly mobile nodes
- on the mesh with limited connectivity remains an interesting research problem.
- We also have to take into consideration the scalability of the monitoring
- system, in which the wireless mesh may consist of an arbitrarily large
- number of nodes.
- Thus, by implementing an efficient monitoring and visualization system
- we can further improve the ability to troubleshoot the mesh by identifying
- problematic links in the network and speed up its development.
-\end_layout
-
-\begin_layout Standard
-
-\newpage
-
-\end_layout
-
-\begin_layout Section*
-Acknowledgements
-\end_layout
-
-\begin_layout Standard
-This thesis represents my research undertaken during the two semesters in
- 2007.
- Over the time of development and writing of this paper, I have received
- countless support from family, friends and fellow classmates.
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Standard
-Need to finish.
+
+
+\backslash
+pagenumbering{roman}
 \end_layout
 
 \end_inset
@@ -128,80 +192,141 @@ Need to finish.
 
 \end_layout
 
-\begin_layout Section
-Introduction
-\end_layout
-
 \begin_layout Standard
-There is a growing need for resilient and efficient networking technologies
- that can be deployed in environments where networking infrastructure does
- not exist.
- Wireless mesh networking is one of the recent developments in electronic
- communications that aims to achieve this.
-\end_layout
-
-\begin_layout Standard
-To determine the operational status of a wireless mesh network, the mesh
- may be monitored to record meaningful information and other useful statistics.
- Such statistics usually include wireless link information, network utilization,
- latency and packet routing history.
- These measurements can be aggregated and then analyzed.
- By observing the fluctuations in the resulting data, one may be able to
- estimate the overall 
-\begin_inset Quotes eld
-\end_inset
-
-health
-\begin_inset Quotes erd
-\end_inset
-
- of the mesh itself.
- As an example, an observed high packet loss rate and low signal strength
- hints that the wireless links may be too weak or too far apart.
- By collecting multiple relevant data for a wireless mesh network in one
- place, the process of troubleshooting wireless mesh networks may be greatly
- improved.
- The data can also be visualized and displayed as well, for example by plotting
- measurements taken against time, allowing the observer to clearly see any
- faults in the wireless mesh network.
-\end_layout
-
-\begin_layout Standard
-In this thesis, I aim to research methods for monitoring and visualizing
- wireless mesh networks.
- The relevance of the project stems from several issues that need to be
- addressed for the development of wireless mesh networking by National ICT
- Australia (NICTA).
- Implementing an efficient monitoring and visualization system will improve
- researchers
-\begin_inset Quotes ers
-\end_inset
-
- ability to troubleshoot the mesh and speed up its development.
- There has not been much previous research on this area, as well as publicly
- available tools built for this purpose.
-\end_layout
-
-\begin_layout Standard
-At the same time, there has been renewed interest on the usage of multiple
- radio transmission channels in wireless mesh networking, although research
- on this area remains scarce.
- It is also not well established as to how much does a wireless mesh management
- architecture affect the efficiency of the mesh, and what are viable options
- for deploying one such framework.
- It is common to poll each node on the mesh network from a centralized setup,
- where each node responds to poll requests with management data.
- However there has been numerous proposals on decentralizing the management
- architecture for efficiency reasons.
- This project aims to carry out a number of studies for testing these concepts.
- Documenting the observations over the period of the project will allow
- better understanding on issues specific to this installation, such as routing
- protocol recovery and throughput.
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Standard
-Polish up introduction to properly introduce paper.
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+begin{picture}(0,0)(0,50)
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+includegraphics[scale=0.22]{UQlogo.png}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end{picture}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\baselinestretch}{1.0}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace 35mm*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size giant
+Monitoring and Visualizing
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size giant
+of
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size giant
+Wireless Mesh Networks
+\newline
+
+\begin_inset VSpace 20mm
+\end_inset
+
+ 
+\series default
+\shape slanted
+\size large
+by
+\newline
+Zhe Wei Chong 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\newline
+
+\shape default
+ 
+\family roman
+Department of Electrical and Computer Engineering,
+\newline
+ University of Queensland.
+\newline
+
+ 
+\begin_inset VSpace 30mm
+\end_inset
+
+ Submitted for the degree of
+\newline
+ Bachelor of Information Technology (Honours)
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\newline
+ 
+\size normal
+in the division of Networking & Operating Systems / Information Systems
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\newline
+
+\size large
+November 2007.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{titlepage}
 \end_layout
 
 \end_inset
@@ -215,7 +340,344 @@ Polish up introduction to properly introduce paper.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\align right
+\begin_inset VSpace medskip
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align left
+The Dean
+\newline
+ School of Engineering
+\newline
+ University of Queensland
+\newline
+ St Lucia, Q 4072
+\newline
+
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+ Dear Professor Paul Bailes, 
+\end_layout
+
+\begin_layout Standard
+In accordance with the requirements of the degree of Bachelor of Information
+ Technology (Honours) in the division of Networking & Operating Systems
+ / Information Systems, I present the following thesis entitled 
+\begin_inset Quotes eld
+\end_inset
+
+Monitoring and Visualization of Wireless Mesh Networks
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This work was performed under the supervision of Dr Marius Portmann.
+\end_layout
+
+\begin_layout Standard
+I declare that the work submitted in this thesis is my own, except as acknowledg
+ed in the text and footnotes, and has not been previously submitted for
+ a degree at the University of Queensland or any other institution.
+\end_layout
+
+\begin_layout Standard
+\align right
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align right
+Yours sincerely,
+\newline
+ Zhe Wei Chong.
+\end_layout
+
+\begin_layout Standard
+
+\newpage
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 70mm*
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset FormulaMacro
+\renewcommand{\baselinestretch}{1.0}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+This thesis represents my research undertaken during the two semesters in
+ 2007.
+ Over the time of development and writing of this paper, I have received
+ countless support from family, friends and fellow classmates.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+I would like to specifically thank Dr Marius Portmann, my thesis supervisor,
+ who has constantly given me guidance and warming words of encouragement
+ throughout the year.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Thanks to National ICT Australia who has kindly given me some financial
+ support for my honours study.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+To my beloved father and mother, thank you for all the support and sacrifice
+ throughout my life, without which I definitely would not have made this
+ far.
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+And finally, cheers to the rest of my friends and students for constantly
+ enlightening me with invaluable words of encouragement.
+\shape default
+
+\newline
+
+\newline
+
+\newline
+Zhe Wei Chong
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Chapter*
+Abstract
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Wireless mesh networking is one of the current advances in electronic communicat
+ions aimed towards building resilient and efficient networks that can be
+ deployed even in environments where networking infrastructure does not
+ exist.
+ This thesis proposes a system for monitoring and visualizing wireless mesh
+ networks based on common networking components.
+ The relevance of this project stems from several issues that need to be
+ addressed for the development of wireless mesh networking solutions by
+ National ICT Australia (NICTA).
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+To determine the operational status of a wireless mesh network, a wireless
+ mesh may be monitored to record meaningful statistics such as wireless
+ link information, network utilization, latency and packet routing history.
+ With NICTA
+\begin_inset Quotes ers
+\end_inset
+
+s current research focusing on the usage of multiple radio transmission
+ channels in order to reduce the contention and latency during data transfers,
+ how to proactively record and visualize the state of possibly mobile nodes
+ on the mesh with limited connectivity remains an interesting research problem.
+ We also have to take into consideration the scalability of the monitoring
+ system, in which the wireless mesh may consist of an arbitrarily large
+ number of nodes.
+ Thus, by implementing an efficient monitoring and visualization system
+ we can further improve the ability to troubleshoot the mesh by identifying
+ problematic links in the network and speed up its development.
+\begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\end_layout
+
+\end_inset
+
+List of Figures
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Standard
+There is a growing need for resilient and efficient networking technologies
+ that can be deployed in environments where networking infrastructure does
+ not exist.
+ Wireless mesh networking is one of the recent developments in electronic
+ communications that aims to achieve this.
+ To determine the operational status of a wireless mesh network, the mesh
+ may be monitored to record meaningful statistics such as wireless link
+ information, network utilization, latency and packet routing history.
+ By observing the fluctuations in the resulting data, one may be able to
+ estimate the overall 
+\begin_inset Quotes eld
+\end_inset
+
+health
+\begin_inset Quotes erd
+\end_inset
+
+ of the mesh itself.
+\end_layout
+
+\begin_layout Standard
+Based on these concepts, this thesis aims to research methods for monitoring
+ and visualizing wireless mesh networks, and document the design and implementat
+ion of a wireless mesh monitoring system named 
+\begin_inset Quotes eld
+\end_inset
+
+MeshMon
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The relevance of the project stems from several issues that need to be
+ addressed for the development of wireless mesh networking by National ICT
+ Australia (NICTA), as well as the scarceness of available tools for this
+ purpose.
+\end_layout
+
+\begin_layout Standard
+MeshMon is roughly composed of two separate components: the MeshMon Application
+ Programming Interface (API) provides an interface on which higher level
+ applications can be developed on, and an implementation of the wireless
+ mesh monitoring system based on this API.
+ By introducing a modular application framework where components can be
+ added and extended easily, this thesis hopes that it will encourage more
+ future work on this topic.
+\end_layout
+
+\begin_layout Standard
+Research work done on this topic will be discussed over 7 chapters in this
+ document.
+ Specifically, chapter 2 of this document provides an introductory literature
+ review to recent work and problems faced in related research areas.
+ Chapter 3 outlines the main goals of the project, its motivations, and
+ the expected deliverables of this thesis.
+ In chapter 4, the document delves deeper into the system architecture of
+ MeshMon, and explains design decisions made in each component of the monitoring
+ system.
+ Chapter 5 presents the internal workings of MeshMon along with code and
+ algorithm samples, and is intended for readers who may be interested in
+ extending or modifying the system for their own use.
+ And then finally, chapter 6 documents findings and results from the thesis,
+ possible ideas on future work, and summarizes the work done on this thesis.
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Chapter
 Background
 \end_layout
 
@@ -224,19 +686,9 @@ The following sections document the basic concepts of wireless mesh network,
  background information on ongoing research on using multi-channel radios
  for mesh connectivity, methods for network monitoring in general, and also
  examples on network visualization.
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Describe more on what will be covered.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Section
 Wireless Mesh Networking
 \end_layout
 
@@ -287,37 +739,17 @@ key "1080833"
 \end_inset
 
 ) and rural environments.
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Point: replacing WLAN
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Present multiple uses
-\end_layout
-
-\end_inset
-
- Presented 
 \end_layout
 
 \begin_layout Standard
-Akyildiz et al.\InsetSpace \space{}
-identifies three type of mesh networks compositions 
+Akyildiz et al\SpecialChar \@.
+ 
 \begin_inset LatexCommand cite
 key "Akyildiz2005"
 
 \end_inset
 
-.
+ identifies three type of mesh networks compositions.
  
 \emph on
 Client mesh
@@ -364,7 +796,75 @@ Hybrid mesh
  project.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+Many wireless mesh routing protocols have been proposed and released over
+ the last.
+ Some more notable ones include the Ad-hoc On-Demand Distance Vector (AODV)
+ routing protocol 
+\begin_inset LatexCommand cite
+key "rfc3561"
+
+\end_inset
+
+, the Optimized Link State Routing protocol (OLSR) 
+\begin_inset LatexCommand cite
+key "Clausen"
+
+\end_inset
+
+ and Dynamic Source Routing (DSR) 
+\begin_inset LatexCommand cite
+key "johnson1996dsr"
+
+\end_inset
+
+.
+ Despite the abundance of protocols and still active ongoing research with
+ wireless mesh routing, these are still many areas that have not been fully
+ tapped by researchers.
+ AODV in particular is being used by NICTA as part of its wireless mesh
+ networking solutions research.
+ AODV is a 
+\begin_inset Quotes els
+\end_inset
+
+reactive
+\begin_inset Quotes ers
+\end_inset
+
+ routing protocol, for mesh routes are only built when required, thus the
+ 
+\begin_inset Quotes els
+\end_inset
+
+On-demand
+\begin_inset Quotes ers
+\end_inset
+
+ in its name.
+ When a connection needs to be established to a destination which route
+ is currently unknown, AODV floods the mesh with routing request broadcast
+ packets.
+ The request packets are continuously forwarded until the route is found
+ by creating a reverse link from the destination node to the source node,
+ or until an intermediate node shares its own route entry to the destination.
+ By only generating traffic when needed this reduces the extra communication
+ overhead needed is minimized, and as nodes do not have to constantly maintain
+ a topology of the wireless mesh in its memory it places lower hardware
+ requirements on mobile nodes.
+ Perkins et al\SpecialChar \@.
+ 
+\begin_inset LatexCommand cite
+key "rfc3561"
+
+\end_inset
+
+ also conclude their study by stating that due to these factors AODV is
+ one of the most scalable ad\SpecialChar \-
+hoc routing protocols available.
+\end_layout
+
+\begin_layout Section
 Multi Radio Meshes
 \begin_inset LatexCommand label
 name "sub:Multi-Radio-Meshes"
@@ -390,18 +890,26 @@ single-channel radios
  However, due to the hardware limitations for sending and receiving signals
  at the same time, IEEE 802.11 is half duplex in nature.
  This leads to the problem of congestion and channel contention.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-This part needs to be completely rewritten.
-\end_layout
+ While receiving radio signals a wireless radio must be placed into promiscuous
+ listening mode and thus cannot send at the same time 
+\begin_inset LatexCommand cite
+key "Henderson2006"
 
 \end_inset
 
- On the other hand the IEEE 802.11 specification allows for using multiple
- non-overlapping channels simultaneously.
+, thus halving the effective throughput of the network link.
+ Mähönen et al\SpecialChar \@.
+
+\begin_inset LatexCommand cite
+key "Maehoenen2006"
+
+\end_inset
+
+ also observes that TCP and UDP throughput drops rapidly as the number of
+ hops in a homogeneous multi hop 802.11 network setup with a single radio
+ per node.
+ However the IEEE 802.11 specification allows for using multiple non-overlapping
+ channels simultaneously.
  Thus, it is possible to employ wireless routers with 
 \begin_inset Quotes els
 \end_inset
@@ -410,11 +918,29 @@ multi-channel radio
 \begin_inset Quotes ers
 \end_inset
 
- capability by assigning each radio to different non-overlapping channels,
- which will minimize the channel contention problem as described earlier.
+ capability by assigning each radio to different non-overlapping channels.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+Recent research on using multiple radios prove that it is capable to address
+ these shortcomings.
+ This approach effectively increases the radio spectrum bandwidth available,
+ and by reducing interference and contention in the network helps to minimize
+ the delay in data transmissions, but it also increases the complexity of
+ programming in order to provide proper synchronization between radio interfaces.
+ In a recent study by NICTA, Pirzada et al\SpecialChar \@.
+ 
+\begin_inset LatexCommand cite
+key "Pirzada2006"
+
+\end_inset
+
+ proves that an improvement to the AODV protocol to better support multiple
+ radios performs significantly better, especially under high load where
+ more network contention lead to a higher packet loss rate.
+\end_layout
+
+\begin_layout Section
 Monitoring
 \end_layout
 
@@ -440,17 +966,6 @@ key "Qiu2006"
 \end_inset
 
 .
- In most cases however, it is best to assume best case 
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Connect this to next paragraph
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -461,21 +976,11 @@ An incomplete, but rather simple metric for identifying problems in the
  and medium statistics, one may be able to pinpoint and single out erratic
  network links in the wireless mesh 
 \begin_inset LatexCommand cite
-key "1163597"
+key "Qiu2003"
 
 \end_inset
 
 .
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Outdated citation key
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -539,26 +1044,25 @@ However, to achieve almost real-time monitoring, the SNMP poll interval
  This results in additional traffic within the mesh that may overload the
  network and impact its performance.
  In their multi\SpecialChar \-
-hop wireless network study Qiu et al.\InsetSpace \space{}
-reports that data collection
- overhead is relatively low and will not affect significantly application
- traffic in the network 
+hop wireless network study Qiu et al\SpecialChar \@.
+ 
 \begin_inset LatexCommand cite
-key "1163597"
+key "Qiu2003"
 
 \end_inset
 
-.
+ reports that data collection overhead is relatively low and will not affect
+ significantly application traffic in the network.
  However the scale of the test is relatively small with only up to 50 nodes,
  thus the study may not be accurate in real-world wireless mesh deployments.
- Henderson and Kotz observes that an interval of below 5 minutes may already
- saturate a wired LAN 
+ Henderson and Kotz 
 \begin_inset LatexCommand cite
 key "Henderson2006"
 
 \end_inset
 
-.
+ observes that an interval of below 5 minutes may already saturate a wired
+ LAN.
  The network addresses of the agents must also be identified beforehand
  for the SNMP poll messages to be transmitted.
  This makes traditional SNMP unsuitable to be used with wireless mesh networks,
@@ -616,66 +1120,134 @@ key "Ramachandran2005"
 .
 \end_layout
 
-\begin_layout Standard
-Another commonly used tool for gathering statistics regarding the data on
- a network is packet 
-\begin_inset Quotes eld
-\end_inset
-
-sniffing
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset LatexCommand cite
-key "Qiu2003"
-
-\end_inset
-
-, which refers to the capturing of all network traffic that can be listened
- to by a machine.
- The network interface will have be placed into 
-\begin_inset Quotes eld
-\end_inset
-
-promiscuous
-\begin_inset Quotes erd
-\end_inset
-
- mode in order to receive the network traffic.
- These traffic data can then be analyzed using specific tools to retrieve
- useful information, such as sender and recipient addresses, protocol used
- and, by stripping away low-layer packet headers, contents of higher-layer
- packets.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Add more information re: monitoring
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Section
 Visualization
 \end_layout
 
 \begin_layout Standard
-Visualizations have always been touted as 
-\begin_inset Note Note
-status open
+A fundamental goal for visualizing information is to clearly delineate the
+ relationships between each entities being shown.
+ One can map these entities on the network into graphical nodes, along with
+ links drawn between them representing these relationships.
+ These links can also be modeled differently depending on the base type
+ of the relationship it is trying to represent.
+ For example, we can vary the colours, opacity, size and shapes to further
+ describe meta information about the relationships.
+\end_layout
 
 \begin_layout Standard
-Finish background section
-\end_layout
+This aspect is particularly attractive for computer networking technologies
+ because there is a need to accurately model physical networks into visual
+ information so that it may help with the development of the physical network
+ itself.
+ In other words, merely having access to performance numbers of a system
+ is not enough still to describe the network's behaviour.
+ Being able to visualize changes in the data, for example via graphical
+ animations, provide a much more dynamic representation of data that can
+ help researchers built much intuitive networking protocols, as well as
+ aid in debugging the underlying technologies of the network 
+\begin_inset LatexCommand cite
+key "Breslau2000"
 
 \end_inset
 
+.
+\end_layout
 
+\begin_layout Standard
+The most common techniques for visualizing networks involve drawing 
+\begin_inset Quotes els
+\end_inset
+
+glyphs
+\begin_inset Quotes ers
+\end_inset
+
+, or graphical objects, that will represent a network node onto a flat topology
+ so that each node is positioned spatially 
+\begin_inset LatexCommand cite
+key "eick1996anv"
+
+\end_inset
+
+.
+ While this appears to be trivial for very small or sparsely populated networks,
+ Eick points out that larger networks will immediately encounter the following
+ three problems, namely: display clutter when the screen is showing too
+ much information, non-optimal node positioning which may lead to different
+ perspectives of the data that originally intended, and perceptual tension
+ as certain links dominate the screen's perception even though they have
+ the same relationships to other nodes.
+\end_layout
+
+\begin_layout Standard
+The main problem relevant to this thesis is that research on wireless mesh
+ networking visualization is considerably scarce, and most currently existing
+ tools prove to be an ill fit when attempting to be used with wireless mesh
+ networks.
+ At the present day, many applications already exist that are specifically
+ used to represent computer network topologies in a graphical format.
+ Some more popular ones include Weathermap 
+\begin_inset LatexCommand cite
+key "Jones"
+
+\end_inset
+
+, a network topology generation software commonly used for showing traffic
+ flow between static and known locations on the network.
+ However, in the context of wireless mesh networking where nodes may be
+ mobile, can leave or join the network at any time and form dynamic topologies
+ between themselves, Weathermap proves to be too rigid.
+ NICTA
+\begin_inset Quotes ers
+\end_inset
+
+s original work on the wireless mesh visualization system that predates
+ this thesis uses the Perl version of Weathermap, which also suffers from
+ problems when modeling multiple radio links between mesh nodes.
+ The official OLSR website distributes a custom plugin that uses GraphViz
+ 
+\begin_inset LatexCommand cite
+key "Toennesen2004"
+
+\end_inset
+
+ to illustrate the mesh topology.
+ However, the minimalistic visualizations generated by GraphViz does not
+ provide enough contextual information on the wireless mesh topology itself.
+\end_layout
+
+\begin_layout Standard
+Many existing tools for network statistics visualization can still be used
+ with wireless mesh networking fairly well.
+ Some popular applications used for recording and rendering network traffic
+ visualizations are RRDtool 
+\begin_inset LatexCommand cite
+key "Oetiker"
+
+\end_inset
+
+ and FlowScan 
+\begin_inset LatexCommand cite
+key "Plonka2000"
+
+\end_inset
+
+, as well as monitoring solutions based as RRDtool sch as Cacti 
+\begin_inset LatexCommand cite
+key "cacti"
+
+\end_inset
+
+ and MRTG 
+\begin_inset LatexCommand cite
+key "Oetiker2001"
+
+\end_inset
+
+.
+ RRDtool provides methods for storing historical data into the file system
+ and then rendering them as time series data.
 \end_layout
 
 \begin_layout Standard
@@ -684,11 +1256,11 @@ Finish background section
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 Project Outline
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Motivations
 \end_layout
 
@@ -713,51 +1285,16 @@ Despite the recent peak in interest on wireless mesh networking, research
  A wireless network needs to be capable of growing organically to support
  an arbitrarily large number of mesh nodes.
  The centralized approach used by traditional methods growth will detriment
- the mesh's ability to expand, as the load of ncreases exponentially to
- the number of nodes in the wireless mesh network.
+ the mesh's ability to expand, as the load increases exponentially to the
+ number of nodes in the wireless mesh network.
+ This thesis aims to inspect properties which are known to affect the ability
+ of a network monitoring system to correctly gather statistics on the workings
+ of a wireless mesh, and how to best mitigate these issues as much as possible
+ using simple, easily available solutions.
 \end_layout
 
-\begin_layout Standard
-As this document has covered in 
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-section 2
-\end_layout
-
-\end_inset
-
-,
-\end_layout
-
-\begin_layout Standard
-Also, the thesis aims to inspect properties which are known to affect the
- ability of anetwork monitoring system to correctly gather statistics on
- the workings of a wireless mesh, and how to best mitigate these issues
- as much as possible using simple, easily available solutions.
-\end_layout
-
-\begin_layout Standard
-This involves determining the specificiations that would constitute or improve
- the wireless monitor efficiency
-\end_layout
-
-\begin_layout Standard
-- developing the system requires analyzing previous work by NICTA
-\end_layout
-
-\begin_layout Standard
-- problems in NICTA's system - extremely simple but inefficient, unable
- to fetch more detailed information
-\end_layout
-
-\begin_layout Standard
-- also, rigid structure making it hard to extend
-\end_layout
-
-\begin_layout Standard
-- observed to be very slow over wireless links
+\begin_layout Section
+Project Outline
 \end_layout
 
 \begin_layout Standard
@@ -771,25 +1308,9 @@ s wireless mesh monitoring system.
  With it the network topology, overall health and traffic flow of the wireless
  mesh can be observed, which allows the underlying design of the mesh to
  be evaluated more easily.
-\end_layout
-
-\begin_layout Standard
-The data collected will include generic measurements such as data throughput,
- packet loss, response times and routing, as well as specific 802.11 information,
- such as link quality, signal strength and noise.
- To achieve this an SNMP MIB extension will have to be prepared that is
- capable of retrieving these measurements from the mesh node itself.
- This data is then fed to a graphical imaging tools to be displayed on the
- web interface.
-\end_layout
-
-\begin_layout Standard
-Studies will also be carried out by applying different approaches to the
- wireless mesh monitoring system while observing the overall status of the
- mesh.
- This is particularly to confirm whether it is possible to significantly
- improve data dissemination within the mesh using a decentralized approach
- compared to conventional methods.
+ The data collected will include generic measurements such as data throughput,
+ routing information, as well as specific 802.11 statistics such as link
+ quality, signal strength and noise.
 \end_layout
 
 \begin_layout Standard
@@ -818,15 +1339,6 @@ y, reliability, accuracy, and especially in the case of user interfaces,
  ease of use.
  Several studies will be carried out based on a small-scale testbed in NICTA
  to formulate a hypothesis on efficient network management.
- As previously written, there is not much research on the collection and
- interpretation of monitoring data to determine the health of a mesh network.
- There are no standardized benchmark settings for conducting these experiments
- as well.
- Using NICTA
-\begin_inset Quotes ers
-\end_inset
-
-s testbed, an experimental monitoring system will be deployed and tested.
  Data gathered from the system is then visualized on the web interface.
 \end_layout
 
@@ -838,10 +1350,16 @@ Traffic generated from the testbed will be analyzed to evaluate the efficiency
  A monitoring system should have minimal impact of the wireless mesh itself
  by generating less network overhead, or it may potentially affect the throughpu
 t of other traffic.
- There has been previous research on reducing this overhead, including using
- a separate transmission medium for management traffic, and decentralizing
- the monitoring system.
- Some of these proposals will be reproduced on this testbed and evaluated.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+More concise
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -850,11 +1368,11 @@ t of other traffic.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 Overview and Design
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 System Architecture
 \end_layout
 
@@ -926,7 +1444,7 @@ Nodes: Keeps track of all wireless mesh nodes ever seen on the network,
 \end_layout
 
 \begin_layout Description
-Topology: Generates a virtual topology representing the physcial locations
+Topology: Generates a virtual topology representing the physical locations
  of wireless mesh nodes on it, as well as provide operations for allocating
  mesh nodes to the virtual topology.
 \end_layout
@@ -948,7 +1466,7 @@ Threads: Allows concurrent operation of tasks that may possibly block during
 Web\InsetSpace ~
 Server: Provides a direct method to see all visualizations generated
  by MeshMon as a rendered HTML web page.
- The webserver handles all incoming HTTP requests, generates the output
+ The web server handles all incoming HTTP requests, generates the output
  accordingly, and returns it to the web browser client to be displayed.
 \end_layout
 
@@ -987,7 +1505,7 @@ RRDtool
 \end_layout
 
 \begin_layout Standard
-Each of these components will be further discussed in section 
+Each of these components will be further discussed in chapter 
 \begin_inset LatexCommand ref
 reference "sec:Implementation"
 
@@ -996,36 +1514,188 @@ reference "sec:Implementation"
 , which describes their implementation details and underlying algorithms.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Section
+Components
+\end_layout
 
+\begin_layout Standard
+The following chapter describes concepts and techniques used by MeshMon
+ for monitoring and generating visualizations for wireless mesh networks.
 \end_layout
 
 \begin_layout Subsection
-Visualization
+Nodes Monitoring
+\begin_inset LatexCommand label
+name "sub:Nodes-Monitoring"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The following section describes concepts and techniques used by MeshMon
- for generating visualizations for wireless mesh networks.
-\end_layout
-
-\begin_layout Subsubsection
-Topology
+The main goal of a monitoring system is to properly capture the state of
+ each child node present in the network it is monitoring.
+ This is the same for wireless mesh networking, in that MeshMon is required
+ to gather information from each mesh node, aggregate them into meaningful
+ statistics, and then attempt to visualize these data in graphical format.
 \end_layout
 
 \begin_layout Standard
-To present all mesh nodes currently being monitored by MeshMon, each node
- is mapped to a position on a flat topology diagram.
- Each node's position may be preconfigured in the MeshMon configuration
- file before run time, or have its position 
+For each node present on the wireless mesh, it may or may not be necessary
+ for MeshMon to specifically monitor it.
+ The reverse is especially true for 
 \begin_inset Quotes els
 \end_inset
 
-guessed
+edge nodes
 \begin_inset Quotes ers
 \end_inset
 
- by MeshMon.
+ connected at the outer-lying parts of the wireless mesh, which may be connected
+ in infrastructure mode or do not have the ability to respond to the monitoring
+ system.
+ Thus, for the scope of this thesis we will define nodes into two broad
+ categories:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Generic
+\series default
+ nodes do not have the ability to respond to the monitoring system.
+ Unless a new method has been derived so that the monitoring system can
+ then extract information from the node, it does not have any other use
+ other than showing if there is any data flowing from or towards it from
+ its neighbouring nodes.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Router
+\series default
+ nodes are nodes that may be executing wireless mesh routing software, and
+ therefore function as mesh routers in the network.
+ These nodes are crucial to the monitoring system because they hold a central
+ position in helping to transport packet data from one side of the mesh
+ network to the other side.
+ Changes in their state may directly affect the efficiency of the wireless
+ mesh network, or at least parts of the network directly adjacent to it.
+ These nodes need to be monitored closely so that we may observe the aforementio
+ned changes in the mesh node's state as they occur.
+\end_layout
+
+\begin_layout Standard
+In order to keep track of all nodes of the network, MeshMon maintains a
+ list storing information regarding each node.
+ Each node is represented as a data structure recording the physical address
+ or IP address of a node and name aliases which identify the node from other
+ nodes in the network.
+ These are two ways which nodes can be added to the list while MeshMon is
+ running:
+\end_layout
+
+\begin_layout Itemize
+A node may be explicitly specified to be monitored when the monitoring system
+ is starting up.
+ This can be done by providing the IP addresses of the target nodes in MeshMon's
+ configuration files, or via arbitrary code inserting the node into the
+ list directly.
+\end_layout
+
+\begin_layout Itemize
+Alternatively, MeshMon supports the 
+\series bold
+automatic discovery
+\series default
+ of new mesh nodes.
+ As the monitoring system identifies mesh routing links to other nodes on
+ the network that it has not seen before, these nodes will be automatically
+ added to the monitor list.
+\end_layout
+
+\begin_layout Standard
+Both methods can also be used in a complementary manner.
+ By explicitly specifying just the key router nodes to the monitoring system
+ and then letting it discover the rest of the topology gradually, we are
+ effectively 
+\begin_inset Quotes els
+\end_inset
+
+bootstrapping
+\begin_inset Quotes ers
+\end_inset
+
+ the monitoring list.
+\end_layout
+
+\begin_layout Standard
+When a node is first discovered, the monitoring system needs to probe it
+ to determine its type.
+ If the node responds positively, the monitoring system will assume that
+ it is a router node and adds it to the list of monitored nodes.
+ Otherwise, it is assumed that the node does not support the monitoring
+ system's protocol and the node is categorized as a generic node.
+ While this method may appear to be naive, it is a very simple scheme and
+ adequate enough for the scope of the thesis project.
+\end_layout
+
+\begin_layout Standard
+The second concern of the monitoring system is the overhead that it will
+ put on the wireless mesh itself.
+ According to tests using the wireless channel for monitoring, a shorter
+ polling interval results in more SNMP querying timeouts that over a long
+ polling interval.
+ To reduce its impact on the wireless mesh, MeshMon dynamically scales its
+ polling interval for each node according to its responsiveness.
+ For each timeout that occurs when querying via SNMP, the polling interval
+ is increased by 1 second, but no more than 30 seconds.
+ On the other hand, having more up-to-date monitoring data is preferable;
+ once it has been detected that an SNMP request completed successfully,
+ but the polling interval has been increased beyond 10 seconds, MeshMon
+ reduces the interval by 1 second.
+ This strategy allows graceful scaling of the monitoring system according
+ to network link conditions in the wireless mesh.
+\end_layout
+
+\begin_layout Subsection
+Network Topology
+\begin_inset LatexCommand label
+name "sub:Network-Topology"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The network topology diagram presents all mesh nodes currently being monitored
+ by MeshMon on a flat 2-dimensional space so it can be easily observed by
+ any third-party.
+ Ideally, the topology diagram should accurately capture the positioning
+ of each mesh nodes, relationships between them, and any semantic information
+ that can be presented to interpret the underlying technologies of the wireless
+ mesh.
+ However, not all information will be available in all cases, e\SpecialChar \@.
+g\SpecialChar \@.
+ it may
+ not be possible to know the physical location of a mobile node unless the
+ host device itself is equipped with geopositioning capabilities.
+ Thus, in certain cases it is wholly up to MeshMon to 
+\begin_inset Quotes els
+\end_inset
+
+guess
+\begin_inset Quotes ers
+\end_inset
+
+ the position where a node should be placed in the topology diagram.
+ To help MeshMon reach its decision, the nodes' position may be preconfigured
+ before run time; without doing so MeshMon will have to attempt to pick
+ a position based on currently available information gathered from the wireless
+ mesh network.
  There are a few ways to do this, which will be discussed in order.
 \end_layout
 
@@ -1198,14 +1868,10 @@ reference "fig:Trying-to-place2"
 \end_layout
 
 \begin_layout Standard
-To effectively do so, MeshMon partitions the topology into horizantal layers,
+To effectively do so, MeshMon partitions the topology into horizontal layers,
  as was done similarly in 
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-paper
-\end_layout
+\begin_inset LatexCommand cite
+key "Brandes2001"
 
 \end_inset
 
@@ -1284,10 +1950,181 @@ name "fig:A-mesh-topology"
 
 \begin_layout Standard
 In order to select a layer to allocate the node to, it is still necessary
+ follow certain heuristics so that the visualization does not get cluttered
+ by crossing links, or projects incorrect assumptions about a mesh node's
+ position in the network.
+ However, to properly do so is considered NP-hard 
+\begin_inset LatexCommand cite
+key "Brandes2001"
+
+\end_inset
+
+, as the problem domain can potentially become infinitely complex when more
+ nodes are added to the topology due to long chains of dependencies.
+ Due to the constraints of this thesis, we will only be considering simple
+ techniques that, although will not completely eliminate the aforementioned
+ cluttering problem, reduces chances that the situation could occur.
+ Thus, MeshMon uses two strategies to determine which layer to add to:
+\end_layout
+
+\begin_layout Itemize
+Randomly select a layer,
+\end_layout
+
+\begin_layout Itemize
+Choose a layer closest to its neighbours, and/or
+\end_layout
+
+\begin_layout Itemize
+If a coordinate was specified for this node, allocate the node to the closest
+ layer
+\end_layout
+
+\begin_layout Standard
+For the first strategy, we only allow a maximum number of 
+\emph on
+n
+\emph default
+ nodes to be added into each layer.
+ This helps controlling the size of the resulting topology image so that
+ it will fit naturally on a 1024 pixels wide, 768 pixels height screen when
+ rendered on a web page.
+ The default value for the maximum number of nodes is set to 4, and as a
+ new mesh node is allocated to that layer instance 
+\emph on
+n
+\emph default
+ is incremented by 1.
+ Once 
+\emph on
+n
+\emph default
+ reaches the maximum threshold we consider the layer 
+\begin_inset Quotes els
+\end_inset
+
+full
+\begin_inset Quotes ers
+\end_inset
+
+ and therefore no longer allow nodes to be allocated to it.
+ Using this strategy, MeshMon keeps a list of layers which is not yet full,
+ and randomly picks a layer from this list whenever nodes need to be allocated.
+ If the list of available layers is exhausted, the list will be extended
+ by creating more 
+\begin_inset Quotes els
+\end_inset
+
+fresh
+\begin_inset Quotes ers
+\end_inset
+
+ layers that can be used.
+\end_layout
+
+\begin_layout Standard
+With the second strategy instead of randomly selecting a layer from the
+ list, we can inspect the list of neighbouring nodes which are known to
+ be adjacent to the mesh node that is going to be allocated.
+ Obviously, this can only be applied when AODV information for this node
+ has already been gathered, and any AODV links to neighbouring nodes have
+ been parsed.
+ Once the list of neighbours has been identified, the steps are applied:
+\end_layout
+
+\begin_layout Enumerate
+We can first aggregate all adjacent layers of the neighbouring nodes, including
+ the layer which the neighbours are on.
+ This will present an array of layers which may be ideal for allocating
+ the node to it.
+\end_layout
+
+\begin_layout Enumerate
+Next, a simple voting algorithm is applied by tallying the IDs of all aggregated
+ layers.
+ For every layer present in the array, its representative number is incremented
+ by 1.
+ Thus, if a layer is found to be shown multiple times, it will be represented
+ by a higher number of votes than other layers.
+\end_layout
+
+\begin_layout Enumerate
+Finally, the number of tallied votes is sorted in descending order, and
+ the layer with the highest number is chosen.
+ The new mesh node will be allocated to this layer, which hopefully will
+ be the most ideal position for it.
+\end_layout
+
+\begin_layout Standard
+The main drawback for this strategy is that it cannot be applied to newly
+ detected mesh nodes, which we do not have any AODV information yet.
+ In this situation, it may be better to apply the first method and randomly
+ allocate it a position first, and then reshuffle it once enough information
+ is available to calculate a better position for it.
+\end_layout
+
+\begin_layout Standard
+The last strategy is applied if a mesh node is found to have already been
+ preconfigured to use a fixed coordinate in the topology.
+ This is most useful in mesh configurations where the physical position
+ of each node is already known or can be easily obtained, for example GPS
+ data or inside simulations.
+ Once we determine a scale which can be used to convert positioning data
+ into actual pixels, it is trivial to map the physical location of a mesh
+ node onto the topology.
+ Alternatively, the desired pixel coordinates for a mesh node may be preset
+ in MeshMon's configuration.
+ In both cases, we would still want to convert the positions from pixels
+ into the actual layer so we can keep track of mesh node allocations.
+ This can be done by simply dividing the 
+\emph on
+y
+\emph default
+-coordinate of a node's position with the number of buffering pixels used
+ between layers:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Formula $Layer=\frac{Node_{y}}{Buffer}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Calculating the y-coordinate of a node's position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, using a buffer of 200 pixels, a node with the coordinate 
+\begin_inset Formula $(0,1000)$
+\end_inset
+
+ would be allocated to layer 5.
 \end_layout
 
 \begin_layout Subsection
-Links
+Mesh Links
 \begin_inset LatexCommand label
 name "sub:Links"
 
@@ -1296,7 +2133,777 @@ name "sub:Links"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+To examine the relationship between nodes on the wireless mesh, we can visualize
+ data connections and established routes onto the topology diagram using
+ simple graphical arrows.
+ Thus, if a connection is perceived to have been set up between node 
+\emph on
+A
+\emph default
+ and node 
+\emph on
+B
+\emph default
+, an arrow is drawn between their representative positions on the topology.
+ If data is perceived to be sent from A to B, the arrow should indicate
+ as such.
+ Additional use cases also need to be handled, for example when:
+\end_layout
+
+\begin_layout Itemize
+Data is flowing in both directions,
+\end_layout
+
+\begin_layout Itemize
+Data is flowing in one direction but not the other,
+\end_layout
+
+\begin_layout Itemize
+Data transmission has ceased, and when
+\end_layout
+
+\begin_layout Itemize
+The connection has been teared down.
+\end_layout
+
+\begin_layout Standard
+Each of these cases need to be illustrated so that the connections between
+ mesh nodes can be accurately rendered in the visualization and observed
+ as such.
+\end_layout
+
+\begin_layout Standard
+In order to detect links between nodes, MeshMon relies on AODV's capability
+ to report its own routing table entries.
+ For the current project, NICTA uses a modified version of the AODV daemon
+ that records these entries in a separate log file.
+\end_layout
+
+\begin_layout Standard
+In order to retrieve this log file, MeshMon uses the SNMP protocol to poll
+ SNMP agents present in each node on the wireless mesh, and requesting them
+ to read and return the contents of the log file.
+ This is achieved using NET-SNMP's 
+\emph on
+exec
+\emph default
+ command, which allows the agent to execute predefined commands.
+ It should be mentioned that while this may present a security risk in a
+ open network, it is hoped that by clearly defining this behaviour we assume
+ that users will take measures to prevent unauthorized access to the monitoring
+ system.
+ The SNMP result should be presented in a format similar to the text below:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+Destination  Gateway    Interface  ...
+ Incoming Outgoing
+\end_layout
+
+\begin_layout LyX-Code
+10.0.1.1     10.0.1.1   ath0           1024     0
+\end_layout
+
+\begin_layout LyX-Code
+
+\emph on
+           (more entries may follow)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Example AODV log file
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+In this example, the AODV log file records the destination address of the
+ link, the address of the gateway through which the link may pass through
+ (or may be the same as the destination address), the network interface
+ used by this link, the incoming data rate in number of bytes per second
+ being received through this link, and the outgoing data rate being sent
+ to the destination address.
+ The host node has one AODV link to another mesh node located at 
+\begin_inset Formula $10.0.1.1$
+\end_inset
+
+, with 1 kilobytes per second of data being sent at the same time.
+ Note that the actual log file contains more columns, but they are not shown
+ in this example for brevity purposes.
+ Now that MeshMon has access to the AODV routing information for each mesh
+ node, it can then reconstruct a logical model of the network by linking
+ nodes together that form the wireless mesh.
+ For each gateway node that appears in the AODV log file, they are recorded
+ as a neighbouring node to the source node.
+\end_layout
+
+\begin_layout Standard
+Also, the monitoring system needs to take into consideration that NICTA's
+ wireless mesh routing protocol employs multiple radios, where multiple
+ links may be drawn from one node to more than one other neighbour at the
+ same time.
+ This presents a different use case, where the visualization needs to be
+ able to draw in a concise manner the number of parallel links between nodes.
+ For example, with the following example AODV file:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+Destination  Gateway    Interface  ...
+ Incoming Outgoing
+\end_layout
+
+\begin_layout LyX-Code
+10.0.1.1     10.0.1.1   ath1           1024     0
+\end_layout
+
+\begin_layout LyX-Code
+10.0.1.1     10.0.1.1   ath2           0        0
+\end_layout
+
+\begin_layout LyX-Code
+10.0.1.3     10.0.1.3   ath3           59       0
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Example AODV log file 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+This indicates that the source node is configured with at least three wireless
+ radios, where two interfaces are used to create a parallel link to node
+ 
+\begin_inset Formula $10.0.1.1$
+\end_inset
+
+, and one to 
+\begin_inset Formula $10.0.1.3$
+\end_inset
+
+.
+ Thus, our monitoring system will need to draw a diagram similar to figure
+ 
+\begin_inset LatexCommand ref
+reference "fig:Parallel-links"
+
+\end_inset
+
+.
+ As described in chapter 
+\begin_inset LatexCommand ref
+reference "sub:Multi-Radio-Meshes"
+
+\end_inset
+
+, the main problem which motivated this thesis was the fact that the original
+ visualization tool used by NICTA, Weathermap4RRD, is not capable of drawing
+ parallel links between wireless mesh nodes.
+ Instead links were always straight and therefore will overlap when drawing
+ parallel links.
+ In PHP-Weathermap, the problem is solved by applying a 
+\begin_inset Quotes els
+\end_inset
+
+VIA
+\begin_inset Quotes ers
+\end_inset
+
+ offset to links that specifies a coordinate that a link must pass through.
+ Thus, whenever more than one link needs to be drawn in parallel to a central
+ link inside the visualization, we can calculate an offset that is a few
+ pixels from the central link, and then apply it to the additional links.
+ This effectively 
+\begin_inset Quotes els
+\end_inset
+
+curves
+\begin_inset Quotes ers
+\end_inset
+
+ the additional links so that they are clearly visible in the rendered topology
+ diagram.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename parallel.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Parallel links
+\begin_inset LatexCommand label
+name "fig:Parallel-links"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Gathering Statistics
+\begin_inset LatexCommand label
+name "sub:Gathering-Traffic"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The final aspect of the monitoring component is to record the amount of
+ traffic currently flowing through the wireless mesh, and then displaying
+ it graphically so that it can be observed and analyzed.
+ The system may also gather other related statistics from the mesh which
+ may be relevant when attempting to determine the performance of the system.
+ Most of these statistics can be directly interpreted using its raw values:
+ the throughput of an AODV link can be seen from the number of bytes currently
+ being transferred, just as the strength of a wireless connection can be
+ observed from its signal level.
+ By converting these statistics into a time-lapse visualization which reports
+ their flunctuations over a set amount of time, we can see how well that
+ part of the system is functioning, or if adjustments need to be done to
+ improve its readings.
+\end_layout
+
+\begin_layout Standard
+MeshMon uses RRDtool 
+\begin_inset LatexCommand cite
+key "Oetiker"
+
+\end_inset
+
+ databases for recording traffic data at any point of time and rendering
+ the data as a line chart.
+ In order to store a fixed amount of data over a time period, RRDtool uses
+ a data structure known as a Round Robin Archive 
+\begin_inset LatexCommand cite
+key "Oetikera"
+
+\end_inset
+
+ (RRA).
+ Each RRA contains a fixed number of slots in which data values can be stored.
+ The slot that is used when the RRDtool database is updated is rotated in
+ a round-robin cyclic order.
+ Using this method, old data will be automatically overwritten as newer
+ and more up to date information is written into the database.
+ In order to generate a list of data values over the time period, RRDtool
+ will only have to look over the number of values stored in the RRA history
+ and return them sorted according to the time which the data value was inserted.
+ Each RRDtool database may also be created to store more than one RRA to
+ keep track of multiple related data values.
+ A logical example would be the incoming and outgoing data rate for a mesh
+ node.
+\end_layout
+
+\begin_layout Standard
+To keep track of the traffic flow for each mesh node, an RRDtool database
+ is created for each wireless interface used by the particular node.
+ When an AODV link has been established between nodes, their respective
+ wireless interfaces are marked as active and logged by the AODV daemon.
+ Thus, using the same method as in chapter 
+\begin_inset LatexCommand ref
+reference "sub:Links"
+
+\end_inset
+
+ the log files are retrieved from each mesh node via SNMP and parsed to
+ determine which interfaces are being used, and at the same time we can
+ record the 'Incoming' and 'Outgoing' data rates as provided in the other
+ two columns.
+ These values are inserted into the database along with the current time
+ stamp to be used later.
+\end_layout
+
+\begin_layout Standard
+An alternative fallback method implemented in MeshMon is to retrieve the
+ traffic rate by accessing the SNMP MIB tree hosted by the SNMP agent executing
+ in the mesh node.
+ This needs to be done in a 3-step process:
+\end_layout
+
+\begin_layout Enumerate
+First, given an interface name which we assume is associated with an AODV
+ link, locate the unique integer currently used by the SNMP agent to identify
+ it.
+ When initialized, the SNMP protocol automatically assigns each interface
+ with an integer so that it can be reused in different contexts while querying
+ the MIB tree.
+ To do so, we may query the 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+IF-MIB::ifDescr
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ namespace with the full Object Identifier name 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+iso.org.dod.internet.mgmt.mib-2.interfaces.ifTable.ifEntry.ifDescr
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Comparing the interface name against all entries listed under the MIB tree
+ will yield the interface identifier.
+\newline
+Because we may not even have details
+ on which wireless interfaces are being used by AODV at the moment, it is
+ also necessary to cache the entire 
+\emph on
+ifDescr
+\emph default
+ lookup table so that it may be reused later without the need to send another
+ SNMP request.
+\end_layout
+
+\begin_layout Enumerate
+During the process which the interfaces for multiple wireless radios are
+ initialized, it may be possible that duplicate interfaces are created in
+ the MIB tree with old entries that are actually not activated at all.
+ Thus, a second SNMP request is required to check the operational status
+ for the given wireless interface.
+ This is done using the 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+IF-MIB::ifAdminStatus
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ interface.
+ The process will only proceed if we find that the interface is operational,
+ or marked as 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Finally, using the 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+IF-MIB::ifInOctets
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ and 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+IF-MIB::ifOutOctets
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ namespace, the total number of octets that have been recorded received
+ and sent through that interface is polled.
+ An octet represents one byte, or 8 bits of data.
+ SNMP only keeps a growing counter of octets that have been transferred,
+ but does not record the data rate information in bytes per second format.
+ The octets values are then inserted into the RRDtool database, which will
+ be interpreted by RRDtool afterwards into actual data rates.
+\end_layout
+
+\begin_layout Standard
+Notice that this process requires 3 SNMP requests instead of just 1 for
+ just fetching the AODV log file.
+ This can potentially impede the scalability of the wireless mesh monitoring
+ system, thus this method is normally disabled and is only used as a baseline
+ benchmark for comparing the traditional method of gathering network traffic
+ compared to using the updated version of AODV.
+\end_layout
+
+\begin_layout Standard
+In addition to traffic data, the technique described previously can be applied
+ just as well for any other relevant statistics as long as a data source
+ is available to be queried by MeshMon.
+ As an example, we will inspect how wireless statistics is added as an additiona
+l data source.
+\end_layout
+
+\begin_layout Standard
+In recent Linux operating system distributions, most kernel configurations
+ are built with 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Wireless Extensions
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ 
+\begin_inset LatexCommand cite
+key "Tourrilhes"
+
+\end_inset
+
+ support.
+ Wireless Extensions provides a generic API for Linux which allows IEEE
+ 802.11 Wireless LAN drivers to expose configuration controls and interface
+ statistics to the user space.
+ Linux kernels built with Wireless Extensions enabled will automatically
+ write the current state of their wireless interface into the 
+\emph on
+/proc
+\emph default
+ file system, namely into 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+/proc/net/wireless
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The contents of an example file is as follows:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+Inter-| sta-|   Quality        |   Discarded packets
+\end_layout
+
+\begin_layout LyX-Code
+face  | tus | link level noise |  nwid  crypt   frag  retry ...
+\end_layout
+
+\begin_layout LyX-Code
+eth1:   0000  89.
+  -36.
+  -87.
+     0      1      0     0
+\end_layout
+
+\begin_layout LyX-Code
+     (more entries may follow)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Example /proc/net/wireless file
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Like the AODV log file, each entry in the /proc file is segmented into several
+ column, each which holds a data value.
+ We are particularly interested in the Link Quality, Link Level and Noise
+ column, as they represent the signal quality of a wireless link to a neighbouri
+ng node.
+ We can apply the same steps to extract the data values before storing them
+ in the RRDtool database in the same way as the mesh node's AODV link informatio
+n.
+ Using the 
+\emph on
+exec
+\emph default
+ directive provided by NET-SNMP we can instruct the SNMP agent to query
+ the /proc file and return its text contents to MeshMon.
+\end_layout
+
+\begin_layout Subsection
+Visualization
+\end_layout
+
+\begin_layout Standard
+This chapter briefly discusses any design decisions used when developing
+ MeshMon's visualization function.
+ Concise implementation details are described in chapter 
+\begin_inset LatexCommand ref
+reference "sec:Implementation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+One of the main goals of MeshMon is that the visualization system should
+ be accessible via a simple to use yet ubiquitous interface.
+ It has then been decided that the main user interface for MeshMon should
+ be web-based, as it offers the following advantages:
+\end_layout
+
+\begin_layout Itemize
+With the use of new browser technologies like AJAX, web-based interfaces
+ are inherently cross platform and can be rapidly prototyped, thus speeding
+ up development time.
+\end_layout
+
+\begin_layout Itemize
+Web-based interfaces are much less complicated for developing visualization
+ applications, as most of the required functionality is already implemented
+ in web browser software.
+\end_layout
+
+\begin_layout Itemize
+A web-based interface can be accessed simultaneous by any number of clients
+ within the same network.
+\end_layout
+
+\begin_layout Standard
+While a specialized application may provide finer-grained control over graphical
+ rendering and visualization, it is decided that the additional time required
+ will not be worth the effort.
+\end_layout
+
+\begin_layout Standard
+Thus, a main template for the web interface layout was produced, as shown
+ in figure 
+\begin_inset LatexCommand ref
+reference "fig:Web-interface-layout"
+
+\end_inset
+
+.
+ The majority of the screen space will be used by the network topology diagram,
+ and all traffic visualization images for wireless interfaces will be shown
+ on the right.
+ A method for dynamically changing the monitoring system's parameters is
+ also attached at the bottom of the page as the control panel.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename web.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Web interface layout
+\begin_inset LatexCommand label
+name "fig:Web-interface-layout"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When a client accesses the web interface, the process that follows the HTTP
+ request is illustrated in figure 
+\begin_inset LatexCommand ref
+reference "fig:Visualization-process-overview"
+
+\end_inset
+
+.
+ The visualization component is MeshMon is responsible for rendering images
+ based on information gathered by the monitoring component.
+ Each of these image files are then served by the web interface so that
+ they can be viewed by clients.
+ As newer data is collected and stored, the visualizations will be refreshed
+ as well.
+ Ideally, the changes should be reflected on the client's screen as well,
+ so that patterns in the flunctuations of data may be observed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename visualization.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Visualization process overview
+\begin_inset LatexCommand label
+name "fig:Visualization-process-overview"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Chapter
 Implementation
 \begin_inset LatexCommand label
 name "sec:Implementation"
@@ -1306,12 +2913,54 @@ name "sec:Implementation"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+This chapter intends to cover the internal implementations details of each
+ component in the MeshMon monitoring system using short snippets of code.
+ First, we will touch on the MeshMon programming interface as a form of
+ data storage along with other core components that forms the glue around
+ the entire system.
+ Next, we will delves into the workings of the monitoring and visualization
+ components.
+\end_layout
+
+\begin_layout Section
+Programming Environment
+\end_layout
+
+\begin_layout Standard
+MeshMon is written almost completely using the Python programming language,
+ specifically Python version 2\SpecialChar \@.
+5.
+ There are several reasons Python was chosen, namely:
+\end_layout
+
+\begin_layout Itemize
+Python as a scripting language is compatible with most operating system
+ platforms, and is especially popular on the Linux operating system.
+ Furthermore, the wireless mesh network testbed is already based on Debian
+ Linux-based workstations.
+\end_layout
+
+\begin_layout Itemize
+Python is well known for its cleaner syntax and lower learning curve.
+ As MeshMon is likely going to be taken over by other developers after the
+ time line of this thesis, it is better if the programming environment poses
+ a lower barrier of entry and could be easily understood.
+\end_layout
+
+\begin_layout Itemize
+One of the main goals of MeshMon is to be as extensible and modular as possible.
+ As Python code files are usually organized as small self-contained modules
+ that can be easily reused and modified, it fits the goal very well.
+\end_layout
+
+\begin_layout Section
 MeshMon API
 \end_layout
 
 \begin_layout Standard
-MeshMon exposes a basic 
+In order to store and access information gathered from the monitoring process,
+ MeshMon exposes a basic 
 \begin_inset Quotes els
 \end_inset
 
@@ -1319,11 +2968,599 @@ Application Programming Interface
 \begin_inset Quotes ers
 \end_inset
 
- (API) that can be used to store and access information gathered from the
- monitoring process.
+ (API) that can be integrated by higher level Python modules.
+ Each component in the MeshMon API is described below.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
+Nodes
+\end_layout
+
+\begin_layout Standard
+The Nodes API is used for keeping track of actual mesh nodes in a wireless
+ mesh network using simple data structures.
+ To allocate a new instance of a Node data structure, the 
+\emph on
+create()
+\emph default
+ function is used using the target node's IP address as its main identifier:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+def create(target):
+\end_layout
+
+\begin_layout LyX-Code
+    return _Node(target)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Nodes API 
+\emph on
+create()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+The Node data structure does not contain any information other than its
+ canonical address when it is first created.
+ The list of neighbours and interfaces being used by the node will be eventually
+ updated once AODV information has been fetch for this node.
+ Before we can do anything else, the Node data structure needs to be added
+ to the monitored nodes' list using the API 
+\emph on
+add()
+\emph default
+ function.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+def add(target):
+\end_layout
+
+\begin_layout LyX-Code
+    collection.append(target)
+\end_layout
+
+\begin_layout LyX-Code
+    topology.add(target))
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Nodes API 
+\emph on
+add()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+This appends the new node structure to the monitored nodes' list, as well
+ as to the topology API.
+ As part of the monitor list the node will then be periodically queried
+ to inspect its internal state, and if any relevant information has been
+ gathered by the monitoring system they will be stored in this data structure.
+\end_layout
+
+\begin_layout Subsection
+Topology
+\end_layout
+
+\begin_layout Standard
+The Topology API manages the virtual mesh topology as 
+\begin_inset Quotes els
+\end_inset
+
+observed
+\begin_inset Quotes ers
+\end_inset
+
+ by the MeshMon monitoring system.
+ The virtual topology is represents as a flat 2-dimensional space of dynamic
+ width and height.
+ As nodes are added to it the topology may grow so that it can accommodate
+ them.
+ To understand what happens behind the API, we shall first take a look at
+ the data structures kept internally by Topology:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+# temporary table for all nodes added
+\end_layout
+
+\begin_layout LyX-Code
+collection = []
+\end_layout
+
+\begin_layout LyX-Code
+# size of current mesh topology
+\end_layout
+
+\begin_layout LyX-Code
+width = 0
+\end_layout
+
+\begin_layout LyX-Code
+height = 0
+\end_layout
+
+\begin_layout LyX-Code
+# free layers available
+\end_layout
+
+\begin_layout LyX-Code
+layers = [0]
+\end_layout
+
+\begin_layout LyX-Code
+# temporary table for allocated nodes
+\end_layout
+
+\begin_layout LyX-Code
+allocations = {0: []}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Topology API data structures
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Similar to the Nodes API it maintains a collection of nodes that need to
+ be managed by the Topology API.
+ This is not the same collection data structure as the Nodes API, as both
+ of them were designed for different purposes.
+ From the code snippet, it can be seen that initially because there are
+ no nodes allocated to the layers managed by the topology yet, the size
+ of the topology is limited to 0 pixels in width and height.
+ Once a node has been added to the topology using its API 
+\emph on
+add()
+\emph default
+ function, some adjustments will take place in order to calculate the new
+ state of the topology:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+def add(node):
+\end_layout
+
+\begin_layout LyX-Code
+    collection.append(node)
+\end_layout
+
+\begin_layout LyX-Code
+    ...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Topology API 
+\emph on
+add()
+\emph default
+ part I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+First, if we already have preconfigured positions for the given node, we
+ can use it for calculating the layer for allocating.
+ As described in chapter 
+\begin_inset LatexCommand ref
+reference "sub:Network-Topology"
+
+\end_inset
+
+, the layer number is found simply by dividing the 
+\emph on
+y
+\emph default
+-coordinate with the number of pixels used for the inter-layer buffer:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+if positions.has_key(node.address):
+\end_layout
+
+\begin_layout LyX-Code
+    # if node already has static allocations available
+\end_layout
+
+\begin_layout LyX-Code
+    node.position = positions[node.address]
+\end_layout
+
+\begin_layout LyX-Code
+    layer = (positions[node.address][1] / buffer)
+\end_layout
+
+\begin_layout LyX-Code
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Topology API 
+\emph on
+add()
+\emph default
+ part II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+If a node does not have a preconfigured position, we will have to find a
+ layer manually.
+ This is done by randomly selecting one from a list of available layers:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+elif config.DynamicTopology:
+\end_layout
+
+\begin_layout LyX-Code
+    # pick a layer and insert the node
+\end_layout
+
+\begin_layout LyX-Code
+    layer = random.choice(layers)
+\end_layout
+
+\begin_layout LyX-Code
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Topology API 
+\emph on
+add()
+\emph default
+ part III
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Next, the node is then appended to the layer.
+ if the layer contains other nodes which were dynamically allocated as well,
+ it is necessary to readjust the positions of all 
+\begin_inset Quotes els
+\end_inset
+
+non-fixed
+\begin_inset Quotes ers
+\end_inset
+
+ nodes so that they appear consistent in the resulting topology visualization.
+ The follow pseudo code briefly outlines the algorithm being used for the
+ adjustment:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+# we have allocated the node to this layer
+\end_layout
+
+\begin_layout LyX-Code
+allocations[layer].append(node)
+\end_layout
+
+\begin_layout LyX-Code
+# check if the layers need adjusting
+\end_layout
+
+\begin_layout LyX-Code
+for layer, allocation in allocations.items():
+\end_layout
+
+\begin_layout LyX-Code
+    .
+\emph on
+..
+ if the layer needs to be readjusted ...
+\end_layout
+
+\begin_layout LyX-Code
+    parts = 
+\emph on
+partition the layer into slots
+\end_layout
+
+\begin_layout LyX-Code
+    for n in 
+\emph on
+nodes to be adjusted
+\emph default
+:
+\end_layout
+
+\begin_layout LyX-Code
+        # find a best position and insert it there
+\end_layout
+
+\begin_layout LyX-Code
+        if len(parts) > 0:
+\end_layout
+
+\begin_layout LyX-Code
+
+\emph on
+            add n to a slot between two partitions
+\end_layout
+
+\begin_layout LyX-Code
+        elif len(
+\emph on
+static nodes
+\emph default
+) > 0:
+\end_layout
+
+\begin_layout LyX-Code
+
+\emph on
+            append n right after the last static node
+\end_layout
+
+\begin_layout LyX-Code
+        else: 
+\emph on
+the layer is empty, just place n in
+\end_layout
+
+\begin_layout LyX-Code
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Topology API 
+\emph on
+add()
+\emph default
+ part IV
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Finally, we will have to check if it is necessary to increase the width
+ and height of the topology diagram so that it can accommodate the new topology
+ state.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+# check if the expected height is higher than current height
+\end_layout
+
+\begin_layout LyX-Code
+xheight = (
+\emph on
+highest layer used
+\emph default
+ - 1) * buffer + 
+\emph on
+vertical margin
+\emph default
+ * 2
+\end_layout
+
+\begin_layout LyX-Code
+if height < xheight: height = xheight
+\end_layout
+
+\begin_layout LyX-Code
+# check if the expected width is wider than current width
+\end_layout
+
+\begin_layout LyX-Code
+xwidth = max((len(allocations[layer]) - 1) * buffer +
+\end_layout
+
+\begin_layout LyX-Code
+
+\emph on
+    horizontal margin
+\emph default
+ * 2, n.position[1] + 
+\emph on
+horizontal margin
+\emph default
+)
+\end_layout
+
+\begin_layout LyX-Code
+if width < xwidth: width = xwidth
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Topology API 
+\emph on
+add()
+\emph default
+ part V
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection
 Threading
 \end_layout
 
@@ -1331,8 +3568,7 @@ Threading
 One of the main problems of NICTA's original wireless mesh monitoring prototype
  was its inability to run concurrent monitoring processes and fully utilize
  the host computer's CPU and networking capability.
- To solve this, MeshMon uses a multi\SpecialChar \-
-threaded approach by launching monitoring
+ To solve this, MeshMon uses a multi threaded approach by launching monitoring
  processes for each mesh node in its own thread.
  This implementation is outlined using the 
 \emph on
@@ -1351,8 +3587,17 @@ MonitorThread
 \end_layout
 
 \begin_layout Standard
-The GenericThread interface is basically described below:
+Generic threads are simply plain thread implementations that execute a task
+ and terminate when they have finished.
+ The GenericThread interface is basically described below:
 \end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
 \begin_layout LyX-Code
 class GenericThread(Thread):
@@ -1373,11 +3618,46 @@ dummy function
 \end_layout
 
 \begin_layout LyX-Code
+        # run the function once
+\end_layout
+
+\begin_layout LyX-Code
         self.func()
 \end_layout
 
 \begin_layout Standard
-The 
+\begin_inset Caption
+
+\begin_layout Standard
+GenericThread interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Monitoring threads implement the generic thread, except that they are generally
+ used for implementing 
+\begin_inset Quotes els
+\end_inset
+
+daemon
+\begin_inset Quotes ers
+\end_inset
+
+ code that needs to be repeated constantly every few seconds until terminated.
+ The 
 \emph on
 MonitorThread
 \emph default
@@ -1385,10 +3665,166 @@ MonitorThread
 \end_layout
 
 \begin_layout LyX-Code
-.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+class MonitorThread(GenericThread):
 \end_layout
 
-\begin_layout Subsection
+\begin_layout LyX-Code
+    def __init__(self):
+\end_layout
+
+\begin_layout LyX-Code
+        self.interval = 60 # seconds
+\end_layout
+
+\begin_layout LyX-Code
+        self.run_flag = 1
+\end_layout
+
+\begin_layout LyX-Code
+    def run(self):
+\end_layout
+
+\begin_layout LyX-Code
+        # keep executing the function every 
+\emph on
+interval
+\emph default
+ number of seconds
+\end_layout
+
+\begin_layout LyX-Code
+        while self.run_flag == 1:
+\end_layout
+
+\begin_layout LyX-Code
+            self.func()
+\end_layout
+
+\begin_layout LyX-Code
+            time.sleep(self.interval)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+MonitorThread interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When daemon threads are spawned it is necessary to manually keep track of
+ them so that they can be killed when MeshMon is shutting down.
+ If not, the thread will be 
+\begin_inset Quotes els
+\end_inset
+
+orphaned
+\begin_inset Quotes ers
+\end_inset
+
+ and continues to consume CPU cycles even if the monitoring activities has
+ already been ceased.
+ This is done using a 
+\begin_inset Quotes els
+\end_inset
+
+thread pool
+\begin_inset Quotes ers
+\end_inset
+
+, which is simply a list of all threads even created during the lifetime
+ of the system.
+ Newly created threads can be added to the pool using the Threads API 
+\emph on
+add()
+\emph default
+ function, and when the system is shutting down 
+\emph on
+terminate_all()
+\emph default
+ is called.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+def add(thread, run=True):
+\end_layout
+
+\begin_layout LyX-Code
+    pool.append(thread)
+\newline
+
+\newline
+def terminate_all(wait=False):
+\end_layout
+
+\begin_layout LyX-Code
+    for thread in pool:
+\end_layout
+
+\begin_layout LyX-Code
+        thread.run_flag = 0
+\end_layout
+
+\begin_layout LyX-Code
+    ....
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Threads API 
+\emph on
+add()
+\emph default
+ and 
+\emph on
+terminate_all()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Plugin Architecture
 \end_layout
 
@@ -1467,23 +3903,46 @@ To be recognized as a MeshMon plugin, the Python modules need to implement
 \end_layout
 
 \begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
 PLUGIN_INFO = {
 \end_layout
 
 \begin_layout LyX-Code
-    'Plugin name',
+    'NAME': '
+\emph on
+Plugin name
+\emph default
+',
 \end_layout
 
 \begin_layout LyX-Code
-    'Plugin author',
+    'AUTHOR': '
+\emph on
+Plugin author
+\emph default
+',
 \end_layout
 
 \begin_layout LyX-Code
-    'Plugin version',
+    'VERSION': '
+\emph on
+Plugin version
+\emph default
+',
 \end_layout
 
 \begin_layout LyX-Code
-    'Plugin description'
+    ''DESCRIPTION': '
+\emph on
+Plugin description
+\emph default
+'
 \end_layout
 
 \begin_layout LyX-Code
@@ -1491,17 +3950,716 @@ PLUGIN_INFO = {
 \end_layout
 
 \begin_layout Standard
-Otherwise, MeshMon will refuse to load the module.
+\begin_inset Caption
+
+\begin_layout Standard
+MeshMon plugin interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the Python module does not appear to implement this data structure, MeshMon
+ will assume that it is not a valid plugin and will refuse to load the module.
  This effectively prevents MeshMon from failing to run correctly due to
  misconfiguration.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+A plugin does not have to implement most of the functionality by itself,
+ but may freely make use of the MeshMon API for its own purposes.
+ Plugins may also implement sub-modules, in which the plugin's functionality
+ may be split according to the Gatherer/Renderer categories.
+ As an example, the RRDtool plugin implements the follow four classes using
+ the Threads interface:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+gatherersrrdsink.AodvThread,
+\end_layout
+
+\begin_layout LyX-Code
+gatherers.rrdsink.GathererThread,
+\end_layout
+
+\begin_layout LyX-Code
+rendering.rrd.GraphingThread,
+\end_layout
+
+\begin_layout LyX-Code
+rendering.weathermap.WeathermapThread
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+RRDtool plugin classes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the additional strings in front of the class names, for example
+ 
+\begin_inset Quotes eld
+\end_inset
+
+gatherers.rrdsink
+\begin_inset Quotes erd
+\end_inset
+
+ simply refer to the Python module namespace which the class resides in.
+ Therefore, when MeshMon activates the plugin, all it does is just instantiate
+ the sub-modules that were implemented:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+threads.add(gatherers.rrdsink.AodvThread())
+\end_layout
+
+\begin_layout LyX-Code
+for node in nodes.collection:
+\end_layout
+
+\begin_layout LyX-Code
+    threads.add(gatherers.rrdsink.GathererThread(node))
+\end_layout
+
+\begin_layout LyX-Code
+    threads.add(rendering.rrd.GraphingThread(node))
+\end_layout
+
+\begin_layout LyX-Code
+threads.add(rendering.weathermap.WeathermapThread())
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+The RRDtool plugin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+RRDtool/Weathermap Implementation
+\end_layout
+
+\begin_layout Standard
+In this chapter we will further describe how the RRDtool plugin is implemented.
+ The following list summarizes the modules implemented by this plugin and
+ their intended functionality, and also outlines how the MeshMon API described
+ in previous sections were used:
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+AODV Thread
+\series default
+ polls each mesh node in the monitor list to retrieve their AODV log files,
+ so that it can be identify existing mesh links and discover neighbouring
+ nodes.
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+Gatherer Thread
+\series default
+ retrieves the traffic rate and wireless statistics from each mesh node
+ (which may have already been cached by the AODV thread), and then inserts
+ the statistics for each wireless interface into a separate RRDtool database.
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+Graphing Thread
+\series default
+ simply updates the traffic and statistics visualizations using the RRDtool
+ databases every few seconds.
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+Weathermap Thread
+\series default
+ periodically generates the network topology diagram.
+ It finds a list of mesh nodes currently present in the network, maps the
+ links between them, generates a PHP-Weathermap configuration file from
+ a dynamic template, and then invokes PHP-Weathermap to render the final
+ topology diagram.
+\end_layout
+
+\begin_layout Standard
+The following sections will discuss in detail each of the aforementioned
+ modules.
+\end_layout
+
+\begin_layout Subsection
+AODV
+\end_layout
+
+\begin_layout Standard
+In order for NET-SNMP to export the AODV log file, the SNMP agent needs
+ to be configured to enable the 
+\emph on
+exec
+\emph default
+ configuration directive.
+ These two lines need to be added to 
+\emph on
+/etc/snmp/snmpd.conf
+\emph default
+:
+\end_layout
+
+\begin_layout LyX-Code
+exec aodv /bin/cat /var/log/aodvd.rtlog
+\end_layout
+
+\begin_layout LyX-Code
+exec wifi /bin/cat /proc/net/wireless
+\end_layout
+
+\begin_layout Standard
+These lines instruct the SNMP agent to read the two files and return their
+ contents as plain text to the caller.
+ The results will be mapped under 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+enterprises.ucdavis.extTable.extEntry
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, or 
+\begin_inset Quotes eld
+\end_inset
+
+ \SpecialChar \@.
+1\SpecialChar \@.
+3\SpecialChar \@.
+6\SpecialChar \@.
+1\SpecialChar \@.
+4\SpecialChar \@.
+1\SpecialChar \@.
+2021\SpecialChar \@.
+8
+\begin_inset Quotes erd
+\end_inset
+
+ in OID .
+ To be able to gain access to this part of the MIB tree the default SNMP
+ community security options also need to be changed to allow read access.
+\end_layout
+
+\begin_layout LyX-Code
+com2sec readonly default public
+\end_layout
+
+\begin_layout LyX-Code
+com2sec readwrite default private
+\end_layout
+
+\begin_layout Standard
+After this has been set up, polling the SNMP agent using the given OID will
+ return a PySNMP array object containing the results of the SNMP query.
+ However the results is still presented as raw text blocks that cannot be
+ interpreted directly yet.
+ The text blocks are parsed using regular expressions to identify the key
+ values stored inside the array, and each entry is split into a separate
+ Python data structure to hold the data values.
+ The same method is applied to the 
+\emph on
+/proc/net/wireless
+\emph default
+ file, since it has been retrieved at the same time.
+\end_layout
+
+\begin_layout Standard
+For example, this regular expression is used for parsing the AODV log file:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+pattern = re.compile(
+\end_layout
+
+\begin_layout LyX-Code
+    '^(
+\backslash
+d{1,3}
+\backslash
+.
+\backslash
+d{1,3}
+\backslash
+.
+\backslash
+d{1,3}
+\backslash
+.
+\backslash
+d{1,3})
+\backslash
+s+' + # destination
+\end_layout
+
+\begin_layout LyX-Code
+    '(
+\backslash
+d{1,3}
+\backslash
+.
+\backslash
+d{1,3}
+\backslash
+.
+\backslash
+d{1,3}
+\backslash
+.
+\backslash
+d{1,3})
+\backslash
+s+' + # gateway
+\end_layout
+
+\begin_layout LyX-Code
+    '(
+\backslash
+w{3,4}
+\backslash
+d)
+\backslash
+s+' +      # interface
+\end_layout
+
+\begin_layout LyX-Code
+    '(
+\backslash
+w)
+\backslash
+s+' +             # 802.11 type
+\end_layout
+
+\begin_layout LyX-Code
+    '(
+\backslash
+d{1,2})
+\backslash
+s+'          # channel
+\end_layout
+
+\begin_layout LyX-Code
+    '(
+\backslash
+d+)
+\backslash
+s+' +            # sent
+\end_layout
+
+\begin_layout LyX-Code
+    '(
+\backslash
+d+)
+\backslash
+s*' +            # received
+\end_layout
+
+\begin_layout LyX-Code
+    '(
+\backslash
+w+)?')               # flag
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Regex for parsing the AODV log file
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As a result, the text blocks are parsed into Python lists, with each element
+ being stored as a Python dictionary representing a one-line entry in its
+ original text file.
+ Because wireless interface names are always unique in these text blocks
+ they are used as primary dictionary keys, while the data values can be
+ looked up in the dictionary using their column names as secondary dictionary
+ keys.
+ For example, to access the destination address of an AODV link that is
+ using the interface 
+\begin_inset Quotes eld
+\end_inset
+
+wlan0
+\begin_inset Quotes erd
+\end_inset
+
+, we can use this code:
+\end_layout
+
+\begin_layout LyX-Code
+address = results['wlan0']['destination']
+\end_layout
+
+\begin_layout Standard
+Using this data structure, it is then trivial to check all entries returned
+ to detect link changes between two mesh nodes, or when a new mesh node
+ appears on the wireless mesh.
+\end_layout
+
+\begin_layout Standard
+For each new node found, we will have to first check if it is a router node.
+ For this purpose, we simply send an SNMP query to the node using the OID
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+SNMPv2-MIB::sysDesc
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, which should return a description of the system if an SNMP agent is present
+ on the node.
+ If so, a gatherer thread and a graphing thread is instantiated for that
+ node as it is added to the monitored nodes' list.
+\end_layout
+
+\begin_layout Subsection
+Gatherer
+\end_layout
+
+\begin_layout Standard
+In the final version of MeshMon, the gatherer thread does not actually dispatch
+ any SNMP queries for polling the traffic rate because the data collection
+ work has already been completed by the AODV thread (see chapter 
+\begin_inset LatexCommand ref
+reference "sub:Gathering-Traffic"
+
+\end_inset
+
+ for further discussion).
+ In this case, the gatherer thread only checks the operational status of
+ each monitored interface via SNMP, and maintains a list of RRDtool databases
+ that needs to be updated.
+\end_layout
+
+\begin_layout Standard
+If a new wireless interface is used and an RRDtool database for it does
+ not exist, the gatherer creates a new one using the following template
+ as its file name, and specifying a data archive size of 1 hour:
+\end_layout
+
+\begin_layout LyX-Code
+(
+\emph on
+Target directory
+\emph default
+)/(
+\emph on
+Node IP address
+\emph default
+)-(
+\emph on
+Interface name
+\emph default
+).rrd
+\end_layout
+
+\begin_layout Standard
+Periodically the gatherer checks the query results cached by the AODV thread
+ to check the incoming data rate for each interface, outgoing data rate,
+ wireless signal level, noise level and strength.
+ These data values are then inserted into their respective RRDtool databases
+ to be processed by the RRDtool module described in the next chapter.
+\end_layout
+
+\begin_layout Subsection
+RRDtool
+\end_layout
+
+\begin_layout Standard
+The Graphing thread, also known as the RRDtool thread, simply generates
+ the statistics visualizations from the databases every set amount of time.
+ It also keeps track of a list of RRDtool databases used.
+ If the AODV thread finds a new wireless interface being used, it will be
+ detected and added on the graphing thread as well.
+ The following pseudo code snippet outlines the graph rendering process:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+for 
+\emph on
+each
+\emph default
+ rrd_file:
+\end_layout
+
+\begin_layout LyX-Code
+    rrdtool.graph(
+\emph on
+traffic image file
+\emph default
+,
+\end_layout
+
+\begin_layout LyX-Code
+
+\emph on
+        ...
+ RRDtool options ...
+\end_layout
+
+\begin_layout LyX-Code
+        'LINE1:Maximum incoming bits/second',
+\end_layout
+
+\begin_layout LyX-Code
+        'LINE1:Last incoming bits/second',
+\end_layout
+
+\begin_layout LyX-Code
+        'LINE1:Average incoming bits/second',
+\end_layout
+
+\begin_layout LyX-Code
+        ...
+\end_layout
+
+\begin_layout LyX-Code
+    )
+\end_layout
+
+\begin_layout LyX-Code
+    rrdtool.graph(
+\emph on
+wireless statistics image file
+\emph default
+,
+\end_layout
+
+\begin_layout LyX-Code
+
+\emph on
+        ...
+ RRDtool options ...
+\end_layout
+
+\begin_layout LyX-Code
+        'LINE1:Link Quality',
+\end_layout
+
+\begin_layout LyX-Code
+        'LINE1:Signal Level',
+\end_layout
+
+\begin_layout LyX-Code
+        'LINE1:Noise Level',
+\end_layout
+
+\begin_layout LyX-Code
+        ...
+\end_layout
+
+\begin_layout LyX-Code
+    )
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Graphing thread
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The final result would be two diagrams similar to figure 
+\begin_inset LatexCommand ref
+reference "fig:Example-traffic-diagram"
+
+\end_inset
+
+ and figure 
+\begin_inset LatexCommand ref
+reference "fig:Example-wireless-diagram"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Standard
-More details on plugin, or Simulation
+\begin_inset Graphics
+	filename traffic.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Example traffic diagram
+\begin_inset LatexCommand label
+name "fig:Example-traffic-diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename wifi.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Example wireless statistics diagram
+\begin_inset LatexCommand label
+name "fig:Example-wireless-diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1510,6 +4668,326 @@ More details on plugin, or Simulation
 \end_layout
 
 \begin_layout Subsection
+Weathermap
+\end_layout
+
+\begin_layout Standard
+The Weathermap thread is more complicated as it needs to process information
+ exposed by the Nodes API before it can generate the visualizations.
+ Because it is reliant on PHP-Weathermap to actually generate the images,
+ the thread has to generate a configuration file each time the mesh topology
+ changes, and then pass the updated configuration file as a command line
+ argument to PHP-Weathermap.
+ To simply the process of generating the configuration file, a generic plain
+ text template is read and each 
+\begin_inset Quotes els
+\end_inset
+
+template word
+\begin_inset Quotes ers
+\end_inset
+
+ is replaced using Python templating on-the-fly.
+ For example, the chunk of text below extracted from the template :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+HEIGHT $height
+\end_layout
+
+\begin_layout LyX-Code
+WIDTH $width
+\end_layout
+
+\begin_layout LyX-Code
+KEYPOS $keypos
+\end_layout
+
+\begin_layout LyX-Code
+TIMEPOS $timepos Last Updated: %b %d %Y %H:%M:%S
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Example Weathermap configuration file template
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Is replaced using values from the Topology API.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+HEIGHT 600
+\end_layout
+
+\begin_layout LyX-Code
+WIDTH 700
+\end_layout
+
+\begin_layout LyX-Code
+KEYPOS 570 15
+\end_layout
+
+\begin_layout LyX-Code
+TIMEPOS 490 595 Last Updated: %b %d %Y %H:%M:%S
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Result Weathermap configuration file
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the next step, all nodes in the mesh topology are added to the configuration
+ file similar to the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+NODE MN10.0.1.1
+\end_layout
+
+\begin_layout LyX-Code
+    POSITION 500 500
+\end_layout
+
+\begin_layout LyX-Code
+    LABEL 10.0.1.1
+\end_layout
+
+\begin_layout LyX-Code
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+A node in Weathermap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The snippet indicates that a node with the IP address 
+\begin_inset Quotes eld
+\end_inset
+
+10.0.1.1
+\begin_inset Quotes erd
+\end_inset
+
+ will be added to an offset of 500 pixels from the left and 500 pixels from
+ the top.
+ And finally, each mesh links are added to join their source and destination
+ nodes together:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+LINK MN10.0.1.1-ath5-10.0.1.3
+\end_layout
+
+\begin_layout LyX-Code
+    NODES MN10.0.1.1 MN10.0.1.3
+\end_layout
+
+\begin_layout LyX-Code
+    TARGET rrd:10.0.1.3-ath3.rrd:traffic_in:traffic_out
+\end_layout
+
+\begin_layout LyX-Code
+    OUTCOMMENT ath5
+\end_layout
+
+\begin_layout LyX-Code
+    BANDWIDTH 24544
+\end_layout
+
+\begin_layout LyX-Code
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+A link in Weathermap
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The snippet indicates that there exists a two-way link between a node with
+ the IP address 
+\begin_inset Quotes eld
+\end_inset
+
+10.0.1.1
+\begin_inset Quotes erd
+\end_inset
+
+ and another with 
+\begin_inset Quotes eld
+\end_inset
+
+10.0.1.3
+\begin_inset Quotes erd
+\end_inset
+
+ through a wireless interface labeled 
+\begin_inset Quotes eld
+\end_inset
+
+ath5
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The maximum bandwidth for that link is 24 kbps, and the traffic data can
+ be read from 
+\begin_inset Quotes eld
+\end_inset
+
+10.0.1.3-ath3.rrd
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, the configuration file is passed to PHP-Weathermap, and the resulting
+ visualization is produced.
+ An example diagram is shown in figure 
+\begin_inset LatexCommand ref
+reference "fig:Example-Weathermap-diagram"
+
+\end_inset
+
+.
+ In order to avoid reading conflicts when PHP-Weathermap is rendering the
+ image at the same time as a web browser is accessing it, PHP-Weathermap
+ is directed to draw into a temporary file.
+ The final image is copied to its actual file name only when it is confirmed
+ that PHP-Weathermap has finished rendering.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename weathermap.png
+	lyxscale 70
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Example Weathermap diagram
+\begin_inset LatexCommand label
+name "fig:Example-Weathermap-diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Web Frontend
 \end_layout
 
@@ -1521,11 +4999,11 @@ key "Swartz"
 \end_inset
 
 .
- Web.py provides an internal WSGI webserver that, when invoked, can listen
+ Web.py provides an internal WSGI web server that, when invoked, can listen
  for requests on a preconfigured port and service them.
- By default, MeshMon starts the webserver on port 8081 using its own thread
+ By default, MeshMon starts the web server on port 8081 using its own thread
  upon starting up.
- At this point, the webserver thread blocks on that TCP port and prepares
+ At this point, the web server thread blocks on that TCP port and prepares
  to accept HTTP requests on this URL:
 \end_layout
 
@@ -1537,6 +5015,13 @@ http://localhost:8081
 The web server is configured to accept a number of commands using a Python
  dictionary, as shown below:
 \end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
 \begin_layout LyX-Code
 URLS = {
@@ -1559,19 +5044,51 @@ URLS = {
 \end_layout
 
 \begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Web server URLs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
 Each entry in the dictionary generates a mapping that links the URL to a
  Python class that accepts the HTTP request type, which may be HTTP POST
  or GET, and any parameters specified in the URL.
  As an example, the implementation that handles 
+\emph on
+
 \begin_inset Quotes eld
 \end_inset
 
 /index.html
+\emph default
+
 \begin_inset Quotes erd
 \end_inset
 
  is similar to the following code:
 \end_layout
+
+\begin_layout LyX-Code
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
 \begin_layout LyX-Code
 class index:
@@ -1582,7 +5099,9 @@ class index:
 \end_layout
 
 \begin_layout LyX-Code
-        # render the results here
+        # 
+\emph on
+render the results here
 \end_layout
 
 \begin_layout LyX-Code
@@ -1590,25 +5109,16 @@ class index:
 \end_layout
 
 \begin_layout LyX-Code
-        # data posted to webserver, execute processing
+        # 
+\emph on
+data posted to web server, execute processing
 \end_layout
 
 \begin_layout Standard
-Images served by the webserver is handled using a separate class to check
- if the file name exists, and is a valid image file.
- This allows the webserver to prevent clients loading images at inopportunate
- periods when Weathermap or RRDTool is still rendering the image contents
- and writing it to file.
-\end_layout
+\begin_inset Caption
 
 \begin_layout Standard
-As MeshMon detects new nodes, node interfaces and AODV links between nodes,
- new Weathermap and RRDTool images are added to the list.
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-how the updates are sent
+Example web server handler
 \end_layout
 
 \end_inset
@@ -1616,13 +5126,564 @@ how the updates are sent
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Images served by the web server is handled using a separate class to check
+ if the file name exists, and is a valid image file.
+ This allows the web server to prevent clients loading images at inopportunate
+ periods when Weathermap or RRDTool is still rendering the image contents
+ and writing it to file.
+\end_layout
+
+\begin_layout Standard
+As MeshMon detects new nodes, node interfaces and AODV links between nodes,
+ new Weathermap and RRDTool images will be generated.
+ In order to show these updates on the web interface, each generated image
+ is set to 
+\begin_inset Quotes els
+\end_inset
+
+expire
+\begin_inset Quotes ers
+\end_inset
+
+ every few seconds.
+ Once that happens, the HTML source tag for each image file is rewritten
+ using JavaScript to append a randomly generated integer to it.
+ This effectively forces the web browser to send a new HTTP request to the
+ server to re-download a new version of the image, while preventing the
+ web browser from caching it.
+ As a result, images on the web interface appear to 
+\begin_inset Quotes els
+\end_inset
+
+self refresh
+\begin_inset Quotes ers
+\end_inset
+
+ automatically.
+\end_layout
+
+\begin_layout Standard
+The web interface control panel also uses Web.py's capability to map HTTP
+ POST requests to Python classes.
+ For example, toggling the statistics view from 
+\begin_inset Quotes eld
+\end_inset
+
+Traffic
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Wireless Statistics
+\begin_inset Quotes erd
+\end_inset
+
+ sends a POST request to this URL:
+\end_layout
+
+\begin_layout LyX-Code
+http://localhost:8081/update?view=1
+\end_layout
+
+\begin_layout Standard
+This request will be handled by a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+update
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ Python class, which will change the current web interface view to show
+ wireless statistics visualization diagrams on the right hand panel instead.
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Chapter
+Observations
+\end_layout
+
+\begin_layout Standard
+So far much of the time and resources are spent on refining the design and
+ structure of the MeshMon monitoring system components.
+ Considering the constraints present on this thesis, it may be considered
+ that the project has at least presented several unique aspects, along with
+ identifying several interesting breakthroughs through the lifetime of the
+ project.
+\end_layout
+
+\begin_layout Standard
+However, due to the some design decisions made during its development cycle,
+ there are still regretfully several shortcomings of the project which has
+ been identified but has not been solved by the end of this thesis.
+ We hope that by discussing each item in order it may be possible for others
+ to look into these issues, and perhaps having better experience or broader
+ horizon of mind these may be resolved one day.
+\end_layout
+
 \begin_layout Section
+Monitoring
+\end_layout
+
+\begin_layout Standard
+The MeshMon monitoring system makes a naive assumption that if a network
+ is overloaded with traffic just reducing the overhead it is imposing on
+ the network itself that the problem should be solved.
+ However, in most cases it appears that there are usually more factors involved
+ when a network link is found to be faltering.
+ We have positively identified that wireless signal reports give a fairly
+ accurate assessment of the 
+\begin_inset Quotes els
+\end_inset
+
+health
+\begin_inset Quotes ers
+\end_inset
+
+ of a link, but in several cases the reasons could not be identified at
+ all.
+\end_layout
+
+\begin_layout Standard
+It has been regretted that due to time constraints it was impossible to
+ attempt research in distributed monitoring.
+ Because the statistics gathering process will be on its own local workstation,
+ the process will not be as easily affected as MeshMon is currently.
+ Furthermore, with direct access to the local filesystem and operating system
+ interface it may have provided much higher accuracy rates, along with less
+ constraints placed on the monitoring system daemon.
+\end_layout
+
+\begin_layout Section
+Visualizations
+\end_layout
+
+\begin_layout Standard
+So far the web-based user interface has proven to be a good design choice,
+ as combined with the more popular browser technologies the interface can
+ indeed present a quite rich environment to develop and interact with.
+ However, the web browser is still inherently limited to the traditional
+ HTTP client-browser model, where a stateless web server can only respond
+ to simple client queries but cannot present much more richer forms of data
+ as a desktop application is capable of.
+ While frontline visualization research is currently concentrating on graphical
+ applications in 3-dimensional environments, the capabilities of MeshMon
+\begin_inset Quotes ers
+\end_inset
+
+s visualization output will be strictly limited to interacting via the web
+ browser.
+\end_layout
+
+\begin_layout Standard
+As for the other visualization components, it has been considerably frustrating
+ to note that many things are still not possible to be done with the PHP-Weather
+map backend.
+\end_layout
+
+\begin_layout Itemize
+As of version 0.84, PHP-Weathermap does not support drawing uni-directional
+ links between nodes.
+ The problem has been identified as a main source of confusion so far, as
+ it can be hard to clearly see if a data link is currently flowing in both
+ directions or just one.
+ (At the time of writing, PHP-Weathermap 0.94 was released 2 days ago, which
+ 
+\emph on
+does
+\emph default
+ one-way links, but the thesis project has already come to an end.)
+\end_layout
+
+\begin_layout Itemize
+PHP-Weathermap also does not provide enough configuration options for optimizing
+ node links to improve visibility.
+ For example, comment tags on links cannot have their colour changed from
+ grey, which is quite hard to read when being shown with parallel links.
+\end_layout
+
+\begin_layout Itemize
+Link traffic is not rendered correctly when traffic is only flowing in one
+ direction.
+\end_layout
+
+\begin_layout Standard
+To solve this in the future, it may be possible to collaborate with PHP-Weatherm
+ap
+\begin_inset Quotes ers
+\end_inset
+
+s author to provide feedback and request the features be implemented (or
+ bugs to be fixed).
+ Otherwise, changes can still be made to PHP-Weathermap
+\begin_inset Quotes ers
+\end_inset
+
+s source code, but this may directly affect the progress of the project
+ as time needs to be spent on source code changes that is not directly related
+ to research.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Chapter
 Conclusion
 \end_layout
 
 \begin_layout Standard
+This thesis presents an implementation of a wireless mesh monitoring system
+ that is capable of gathering data from mesh nodes on a network and rendering
+ them as graphical visualizations.
+ A list of unique features implemented is summarized as follows:
+\end_layout
+
+\begin_layout Subsection*
+Extensible Programming Interface
+\end_layout
+
+\begin_layout Standard
+One of the main goals for this thesis is to develop a monitoring system
+ that can be easily extended and modified to suit the user's needs.
+ By introducing a modular application framework, a plugin architecture,
+ and an example implementation using the API along with fully documented
+ source code, it is hoped that this will greatly reduce the barrier of entry
+ to using this software system.
+\end_layout
+
+\begin_layout Subsection*
+Scalability
+\end_layout
+
+\begin_layout Standard
+Several strategies have been implemented that should reduce the overall
+ traffic overhead used by the monitoring system compared to a fully centralized
+ implementation.
+ This includes polling interval scaling, aggregation of AODV data, and full
+ multi-threaded support so as to increase the efficiency of the monitoring
+ system.
+\end_layout
+
+\begin_layout Subsection*
+Web-Based Visualization Interface
+\end_layout
+
+\begin_layout Standard
+MeshMon introduces a web-based user interface as its main platform for displayin
+g its visualization output.
+ Graphical images are refreshed automatically when updated data is available
+ from the monitoring system.
+ A control panel is integrated into the user interface, allowing users to
+ toggle different types of views on the interface.
+ As a method to debug and test the scalability of the wireless mesh, the
+ control panel also allows the monitoring interval to be changed so that
+ it further reduces the overhead on the system.
+\end_layout
+
+\begin_layout Standard
+Overall, although issues are still present in the architecture of the system,
+ it is hoped that the documentation enclosed in this thesis will provide
+ any insight to others seeking to do future work in this area, and hopefully
+ may help to spur new findings and innovations in the field if wireless
+ mesh monitoring and visualization.
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Using MeshMon
+\end_layout
+
+\begin_layout Section
+Dependencies
+\end_layout
+
+\begin_layout Standard
+Development for this thesis project is based on Ubuntu Linux version 7.10,
+ although it should be able to run on other operating systems such as Microsoft
+ Windows XP or Microsoft Vista if the necessary dependencies are available
+ on that platform.
+ MeshMon requires the following Linux software packages to run:
+\end_layout
+
+\begin_layout Itemize
+Python version 2.5
+\end_layout
+
+\begin_layout Itemize
+Python PySNMP library version 4.17
+\end_layout
+
+\begin_layout Itemize
+Python Web.py library version 0.210
+\end_layout
+
+\begin_layout Itemize
+Python Py-RRDtool library version 1.2.19
+\end_layout
+
+\begin_layout Itemize
+Python Gamin bindings version 0.1.8
+\end_layout
+
+\begin_layout Itemize
+PHP 5.2.3
+\end_layout
+
+\begin_layout Itemize
+PHP-Weathermap 0.92
+\end_layout
+
+\begin_layout Section
+Configuration
+\end_layout
+
+\begin_layout Standard
+Before setting up MeshMon, it needs to be configured so that it knows which
+ nodes need to be monitored.
+ As documented in chapter 
+\begin_inset LatexCommand ref
+reference "sub:Nodes-Monitoring"
+
+\end_inset
+
+, it may be desirable to simply configure MeshMon to monitor all mesh nodes
+ by writing their IP addresses into the configuration file.
+ Alternatively, one may specify the key mesh routers in the network, and
+ let the monitoring system 
+\begin_inset Quotes els
+\end_inset
+
+bootstrap
+\begin_inset Quotes ers
+\end_inset
+
+ the rest of the mesh topology.
+ 
+\end_layout
+
+\begin_layout Standard
+The configuration for nodes to monitor is in 
+\emph on
+config.py
+\emph default
+.
+ It should be noted that as the configuration file itself will be loaded
+ by MeshMon as a Python module, strict adherence to the Python source syntax
+ is required.
+ In this case, the nodes should be written in a Python tuple format.
+\end_layout
+
+\begin_layout LyX-Code
+# A tuple collection of the mobile nodes where traffic data should be collected
+ from
+\end_layout
+
+\begin_layout LyX-Code
+# Example: '192.168.0.1', '127.0.0.1'
+\end_layout
+
+\begin_layout LyX-Code
+Nodes = ('10.0.1.1','10.0.1.3')
+\end_layout
+
+\begin_layout Standard
+Other settings of node are the node positions' configuration, and the node
+ aliases' configuration.
+ The former sets the coordinate of a mesh node when generating the topology
+ diagram, and the latter is used for when a node will be monitored and seen
+ by its neighbouring nodes using two different IP addresses.
+ That is usually required when the monitoring system is deployed on an external
+ channel, for example Ethernet, while the wireless mesh uses 
+\noun on
+IEEE 802.11
+\noun default
+.
+\end_layout
+
+\begin_layout LyX-Code
+# preset node positions in pixels
+\end_layout
+
+\begin_layout LyX-Code
+# Example: {'192.168.0.1': (100,100)}
+\end_layout
+
+\begin_layout LyX-Code
+NodePositions = {
+\end_layout
+
+\begin_layout LyX-Code
+    '10.0.1.1': (200, 200),
+\end_layout
+
+\begin_layout LyX-Code
+    '10.0.1.1': (500, 500)
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+# Temporary table of aliases when monitoring over external interface
+\end_layout
+
+\begin_layout LyX-Code
+NodeAliases = {
+\end_layout
+
+\begin_layout LyX-Code
+    '10.0.1.1': '10.0.0.1',
+\end_layout
+
+\begin_layout LyX-Code
+    '10.0.1.3': '10.0.0.3'
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+It is highly recommended that other configuration options are also inspected
+ to see if any changes may be required.
+ Once we have completed configuring MeshMon, it can be started by invoking
+ the main program in a console:
+\end_layout
+
+\begin_layout LyX-Code
+~$ python src/meshmon.py
+\end_layout
+
+\begin_layout LyX-Code
+MeshMon started.
+\end_layout
+
+\begin_layout LyX-Code
+Press <Ctrl>-C to shut down.
+\end_layout
+
+\begin_layout LyX-Code
+Loaded plugin RRDtool/SNMP/AODV
+\end_layout
+
+\begin_layout LyX-Code
+...
+\end_layout
+
+\begin_layout Standard
+By default, MeshMon starts with the 
+\begin_inset Quotes eld
+\end_inset
+
+RRDtool
+\begin_inset Quotes erd
+\end_inset
+
+ plugin.
+ To start MeshMon with a different plugin than the default, the program
+ can be invoked using the plugin name as the first command line argument.
+ After a short period of time the internal web server should be initialized
+ as well.
+ By default, users on the local computer will then be able access the web
+ interface using the following URL:
+\end_layout
+
+\begin_layout LyX-Code
+http://localhost:8081
+\end_layout
+
+\begin_layout Standard
+For other clients, the localhost loop back address should be replaced with
+ the IP address of the computer running the monitoring system.
+ If the web server port has been changed in the configuration file the number
+ 8081 should also be changed to the correct port number.
+\end_layout
+
+\begin_layout Standard
+After loading the URL clients will be presented with the main web interface.
+ The upper left part shown is the network topology diagram, the bottom left
+ part is the control panel, and the right side are traffic/statistics visualizat
+ion diagrams for each interface, which are collapsed by default.
+ To expand, view and re-collapse the statistics image for a particular interface
+, one can click the arrow next to its description text.
+ If JavaScript is enabled on the browser all images should automatically
+ refresh every few seconds.
+ The refresh period can also be adjusted using the 
+\begin_inset Quotes eld
+\end_inset
+
+Monitoring Interval
+\begin_inset Quotes erd
+\end_inset
+
+ drop-down box in the control panel, which will affect the monitoring daemons
+ as well.
+ The type of statistics being shown can be changed using the 
+\begin_inset Quotes eld
+\end_inset
+
+Toggle View
+\begin_inset Quotes erd
+\end_inset
+
+ drop-down box, which alternates between displaying traffic information
+ and wireless interface statistics.
+\end_layout
+
+\begin_layout Standard
+To shut down the monitoring system, the user may switch back to the console
+ and press 
+\noun on
+Ctrl+C
+\noun default
+ to quit it.
+\end_layout
+
+\begin_layout Standard
+
+\cleardoublepage
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset LatexCommand bibtex
-options "bibtotoc,ieeetr"
+options "bibtotoc,IEEEtran"
 bibfiles "Thesis"
 
 \end_inset
